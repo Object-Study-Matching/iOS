@@ -17,6 +17,15 @@
 		15BC457A2A04D60200F0EBB1 /* StudyMatchingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45792A04D60200F0EBB1 /* StudyMatchingUITestsLaunchTests.swift */; };
 		15BC458C2A04D78F00F0EBB1 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 15BC458B2A04D78F00F0EBB1 /* .swiftlint.yml */; };
 		EDAD709D3BCDFA5A072A5812 /* Pods_StudyMatching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EB9C16F6EE63F39140577 /* Pods_StudyMatching.framework */; };
+		15BC45912A04D9EE00F0EBB1 /* ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45902A04D9EE00F0EBB1 /* ConvenienceInit.swift */; };
+		15BC45932A04D9FD00F0EBB1 /* LayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45922A04D9FD00F0EBB1 /* LayoutSupport.swift */; };
+		15BC45952A04DA0900F0EBB1 /* ViewModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45942A04DA0900F0EBB1 /* ViewModelProtocols.swift */; };
+		15BC45972A04DA3E00F0EBB1 /* UIButton+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45962A04DA3E00F0EBB1 /* UIButton+Combine.swift */; };
+		15BC45992A04DA4800F0EBB1 /* UIControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45982A04DA4800F0EBB1 /* UIControl+Combine.swift */; };
+		15BC459B2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC459A2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift */; };
+		15BC459D2A04DA5B00F0EBB1 /* UISwitch+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC459C2A04DA5B00F0EBB1 /* UISwitch+Combine.swift */; };
+		15BC459F2A04DA6300F0EBB1 /* UITextField+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC459E2A04DA6300F0EBB1 /* UITextField+Combine.swift */; };
+		F34A0A9E23FBE7168E0D694B /* Pods_StudyMatching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26DE0DA8082A5294C25A0B4 /* Pods_StudyMatching.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +62,17 @@
 		1F98149911BB4FC03B2CCD23 /* Pods-StudyMatching.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.debug.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.debug.xcconfig"; sourceTree = "<group>"; };
 		3D5EB9C16F6EE63F39140577 /* Pods_StudyMatching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMatching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB52C67333A3C1EACE002D7C /* Pods-StudyMatching.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.release.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.release.xcconfig"; sourceTree = "<group>"; };
+		15BC45902A04D9EE00F0EBB1 /* ConvenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceInit.swift; sourceTree = "<group>"; };
+		15BC45922A04D9FD00F0EBB1 /* LayoutSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSupport.swift; sourceTree = "<group>"; };
+		15BC45942A04DA0900F0EBB1 /* ViewModelProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocols.swift; sourceTree = "<group>"; };
+		15BC45962A04DA3E00F0EBB1 /* UIButton+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Combine.swift"; sourceTree = "<group>"; };
+		15BC45982A04DA4800F0EBB1 /* UIControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
+		15BC459A2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+CombineInteraction.swift"; sourceTree = "<group>"; };
+		15BC459C2A04DA5B00F0EBB1 /* UISwitch+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwitch+Combine.swift"; sourceTree = "<group>"; };
+		15BC459E2A04DA6300F0EBB1 /* UITextField+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Combine.swift"; sourceTree = "<group>"; };
+		7D3E099F3FA9B6078C24D7DB /* Pods-StudyMatching.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.debug.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.debug.xcconfig"; sourceTree = "<group>"; };
+		B3CEDE5817F7C6AC881706D2 /* Pods-StudyMatching.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.release.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.release.xcconfig"; sourceTree = "<group>"; };
+		C26DE0DA8082A5294C25A0B4 /* Pods_StudyMatching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMatching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +127,7 @@
 		15BC45552A04D60100F0EBB1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				15BC458D2A04D96000F0EBB1 /* Common */,
 				15BC45892A04D62F00F0EBB1 /* Feature */,
 				15BC45862A04D61A00F0EBB1 /* Support */,
 			);
@@ -164,6 +185,37 @@
 				15BC45872A04D62000F0EBB1 /* Main */,
 			);
 			path = Feature;
+			sourceTree = "<group>";
+		};
+		15BC458D2A04D96000F0EBB1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				15BC458F2A04D9DF00F0EBB1 /* Protocol */,
+				15BC458E2A04D9D300F0EBB1 /* CombineCocoa */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		15BC458E2A04D9D300F0EBB1 /* CombineCocoa */ = {
+			isa = PBXGroup;
+			children = (
+				15BC45962A04DA3E00F0EBB1 /* UIButton+Combine.swift */,
+				15BC45982A04DA4800F0EBB1 /* UIControl+Combine.swift */,
+				15BC459A2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift */,
+				15BC459C2A04DA5B00F0EBB1 /* UISwitch+Combine.swift */,
+				15BC459E2A04DA6300F0EBB1 /* UITextField+Combine.swift */,
+			);
+			path = CombineCocoa;
+			sourceTree = "<group>";
+		};
+		15BC458F2A04D9DF00F0EBB1 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				15BC45902A04D9EE00F0EBB1 /* ConvenienceInit.swift */,
+				15BC45922A04D9FD00F0EBB1 /* LayoutSupport.swift */,
+				15BC45942A04DA0900F0EBB1 /* ViewModelProtocols.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		27569C8CBE7079617A1A4249 /* Pods */ = {
@@ -377,9 +429,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15BC45972A04DA3E00F0EBB1 /* UIButton+Combine.swift in Sources */,
+				15BC45992A04DA4800F0EBB1 /* UIControl+Combine.swift in Sources */,
+				15BC45952A04DA0900F0EBB1 /* ViewModelProtocols.swift in Sources */,
+				15BC459D2A04DA5B00F0EBB1 /* UISwitch+Combine.swift in Sources */,
 				15BC455B2A04D60100F0EBB1 /* ViewController.swift in Sources */,
+				15BC45932A04D9FD00F0EBB1 /* LayoutSupport.swift in Sources */,
+				15BC45912A04D9EE00F0EBB1 /* ConvenienceInit.swift in Sources */,
+				15BC459B2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift in Sources */,
 				15BC45572A04D60100F0EBB1 /* AppDelegate.swift in Sources */,
 				15BC45592A04D60100F0EBB1 /* SceneDelegate.swift in Sources */,
+				15BC459F2A04DA6300F0EBB1 /* UITextField+Combine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
