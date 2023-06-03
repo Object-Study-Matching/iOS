@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152E52472A2BB07C00987CA8 /* AuthenticationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52462A2BB07C00987CA8 /* AuthenticationTextField.swift */; };
+		152E524E2A2BB12C00987CA8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E524D2A2BB12C00987CA8 /* SignUpViewController.swift */; };
+		152E52512A2BB17C00987CA8 /* AuthenticationTextField+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52502A2BB17C00987CA8 /* AuthenticationTextField+Constant.swift */; };
+		152E52542A2BB1B300987CA8 /* AuthenticationTextFieldColorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52532A2BB1B300987CA8 /* AuthenticationTextFieldColorState.swift */; };
+		152E52572A2BB1D800987CA8 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52562A2BB1D800987CA8 /* UIColor+Palette.swift */; };
+		152E52592A2BB20900987CA8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52582A2BB20900987CA8 /* UIColor+Hex.swift */; };
+		152E525D2A2BB24400987CA8 /* UISpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E525C2A2BB24400987CA8 /* UISpacing.swift */; };
 		15BC45572A04D60100F0EBB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45562A04D60100F0EBB1 /* AppDelegate.swift */; };
 		15BC45592A04D60100F0EBB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45582A04D60100F0EBB1 /* SceneDelegate.swift */; };
 		15BC455B2A04D60100F0EBB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC455A2A04D60100F0EBB1 /* ViewController.swift */; };
@@ -16,7 +23,6 @@
 		15BC45782A04D60200F0EBB1 /* StudyMatchingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45772A04D60200F0EBB1 /* StudyMatchingUITests.swift */; };
 		15BC457A2A04D60200F0EBB1 /* StudyMatchingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45792A04D60200F0EBB1 /* StudyMatchingUITestsLaunchTests.swift */; };
 		15BC458C2A04D78F00F0EBB1 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 15BC458B2A04D78F00F0EBB1 /* .swiftlint.yml */; };
-		EDAD709D3BCDFA5A072A5812 /* Pods_StudyMatching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EB9C16F6EE63F39140577 /* Pods_StudyMatching.framework */; };
 		15BC45912A04D9EE00F0EBB1 /* ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45902A04D9EE00F0EBB1 /* ConvenienceInit.swift */; };
 		15BC45932A04D9FD00F0EBB1 /* LayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45922A04D9FD00F0EBB1 /* LayoutSupport.swift */; };
 		15BC45952A04DA0900F0EBB1 /* ViewModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC45942A04DA0900F0EBB1 /* ViewModelProtocols.swift */; };
@@ -25,7 +31,7 @@
 		15BC459B2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC459A2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift */; };
 		15BC459D2A04DA5B00F0EBB1 /* UISwitch+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC459C2A04DA5B00F0EBB1 /* UISwitch+Combine.swift */; };
 		15BC459F2A04DA6300F0EBB1 /* UITextField+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC459E2A04DA6300F0EBB1 /* UITextField+Combine.swift */; };
-		F34A0A9E23FBE7168E0D694B /* Pods_StudyMatching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26DE0DA8082A5294C25A0B4 /* Pods_StudyMatching.framework */; };
+		7D4AEB9E5ACC3F52792B9CCF /* Pods_StudyMatching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 437BA1AA397B9E018C8C4E50 /* Pods_StudyMatching.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +52,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0ABB0897461646F8203105DC /* Pods-StudyMatching.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.release.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.release.xcconfig"; sourceTree = "<group>"; };
+		152E52462A2BB07C00987CA8 /* AuthenticationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTextField.swift; sourceTree = "<group>"; };
+		152E524D2A2BB12C00987CA8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		152E52502A2BB17C00987CA8 /* AuthenticationTextField+Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationTextField+Constant.swift"; sourceTree = "<group>"; };
+		152E52532A2BB1B300987CA8 /* AuthenticationTextFieldColorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTextFieldColorState.swift; sourceTree = "<group>"; };
+		152E52562A2BB1D800987CA8 /* UIColor+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
+		152E52582A2BB20900987CA8 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		152E525C2A2BB24400987CA8 /* UISpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISpacing.swift; sourceTree = "<group>"; };
 		15BC45532A04D60100F0EBB1 /* StudyMatching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyMatching.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BC45562A04D60100F0EBB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15BC45582A04D60100F0EBB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,9 +73,6 @@
 		15BC45772A04D60200F0EBB1 /* StudyMatchingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMatchingUITests.swift; sourceTree = "<group>"; };
 		15BC45792A04D60200F0EBB1 /* StudyMatchingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMatchingUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		15BC458B2A04D78F00F0EBB1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		1F98149911BB4FC03B2CCD23 /* Pods-StudyMatching.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.debug.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.debug.xcconfig"; sourceTree = "<group>"; };
-		3D5EB9C16F6EE63F39140577 /* Pods_StudyMatching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMatching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB52C67333A3C1EACE002D7C /* Pods-StudyMatching.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.release.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.release.xcconfig"; sourceTree = "<group>"; };
 		15BC45902A04D9EE00F0EBB1 /* ConvenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceInit.swift; sourceTree = "<group>"; };
 		15BC45922A04D9FD00F0EBB1 /* LayoutSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSupport.swift; sourceTree = "<group>"; };
 		15BC45942A04DA0900F0EBB1 /* ViewModelProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocols.swift; sourceTree = "<group>"; };
@@ -70,9 +81,8 @@
 		15BC459A2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+CombineInteraction.swift"; sourceTree = "<group>"; };
 		15BC459C2A04DA5B00F0EBB1 /* UISwitch+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwitch+Combine.swift"; sourceTree = "<group>"; };
 		15BC459E2A04DA6300F0EBB1 /* UITextField+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Combine.swift"; sourceTree = "<group>"; };
-		7D3E099F3FA9B6078C24D7DB /* Pods-StudyMatching.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.debug.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.debug.xcconfig"; sourceTree = "<group>"; };
-		B3CEDE5817F7C6AC881706D2 /* Pods-StudyMatching.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.release.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.release.xcconfig"; sourceTree = "<group>"; };
-		C26DE0DA8082A5294C25A0B4 /* Pods_StudyMatching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMatching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		437BA1AA397B9E018C8C4E50 /* Pods_StudyMatching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMatching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B30AAFC8190EC3A6C9ACF6A /* Pods-StudyMatching.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.debug.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDAD709D3BCDFA5A072A5812 /* Pods_StudyMatching.framework in Frameworks */,
+				7D4AEB9E5ACC3F52792B9CCF /* Pods_StudyMatching.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +111,90 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		152E52452A2BB06B00987CA8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				152E52462A2BB07C00987CA8 /* AuthenticationTextField.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		152E52492A2BB10300987CA8 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				152E524B2A2BB11400987CA8 /* Common */,
+				152E524A2A2BB10C00987CA8 /* SignUp */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		152E524A2A2BB10C00987CA8 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				152E524C2A2BB11D00987CA8 /* ViewController */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		152E524B2A2BB11400987CA8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				152E52522A2BB19E00987CA8 /* Model */,
+				152E524F2A2BB16900987CA8 /* Extension */,
+				152E52452A2BB06B00987CA8 /* View */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		152E524C2A2BB11D00987CA8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				152E524D2A2BB12C00987CA8 /* SignUpViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		152E524F2A2BB16900987CA8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				152E52502A2BB17C00987CA8 /* AuthenticationTextField+Constant.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		152E52522A2BB19E00987CA8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				152E52532A2BB1B300987CA8 /* AuthenticationTextFieldColorState.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		152E52552A2BB1C500987CA8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				152E525A2A2BB22E00987CA8 /* UIColor */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		152E525A2A2BB22E00987CA8 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				152E52582A2BB20900987CA8 /* UIColor+Hex.swift */,
+				152E52562A2BB1D800987CA8 /* UIColor+Palette.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		152E525B2A2BB23700987CA8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				152E525C2A2BB24400987CA8 /* UISpacing.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		15BC454A2A04D60100F0EBB1 = {
 			isa = PBXGroup;
 			children = (
@@ -110,7 +204,7 @@
 				15BC45762A04D60200F0EBB1 /* StudyMatchingUITests */,
 				15BC45542A04D60100F0EBB1 /* Products */,
 				27569C8CBE7079617A1A4249 /* Pods */,
-				FCD8E267E88BA0BAF2153219 /* Frameworks */,
+				B6034E387E663293E43D9ECF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,6 +276,7 @@
 		15BC45892A04D62F00F0EBB1 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				152E52492A2BB10300987CA8 /* Authentication */,
 				15BC45872A04D62000F0EBB1 /* Main */,
 			);
 			path = Feature;
@@ -190,6 +285,8 @@
 		15BC458D2A04D96000F0EBB1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				152E525B2A2BB23700987CA8 /* Model */,
+				152E52552A2BB1C500987CA8 /* Extension */,
 				15BC458F2A04D9DF00F0EBB1 /* Protocol */,
 				15BC458E2A04D9D300F0EBB1 /* CombineCocoa */,
 			);
@@ -221,16 +318,16 @@
 		27569C8CBE7079617A1A4249 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1F98149911BB4FC03B2CCD23 /* Pods-StudyMatching.debug.xcconfig */,
-				FB52C67333A3C1EACE002D7C /* Pods-StudyMatching.release.xcconfig */,
+				5B30AAFC8190EC3A6C9ACF6A /* Pods-StudyMatching.debug.xcconfig */,
+				0ABB0897461646F8203105DC /* Pods-StudyMatching.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FCD8E267E88BA0BAF2153219 /* Frameworks */ = {
+		B6034E387E663293E43D9ECF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3D5EB9C16F6EE63F39140577 /* Pods_StudyMatching.framework */,
+				437BA1AA397B9E018C8C4E50 /* Pods_StudyMatching.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,12 +339,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15BC457D2A04D60200F0EBB1 /* Build configuration list for PBXNativeTarget "StudyMatching" */;
 			buildPhases = (
-				9E86645F640384F18CA7B80E /* [CP] Check Pods Manifest.lock */,
+				68B60A1BFB3B50AA6221BD60 /* [CP] Check Pods Manifest.lock */,
 				15BC454F2A04D60100F0EBB1 /* Sources */,
 				15BC45502A04D60100F0EBB1 /* Frameworks */,
 				15BC45512A04D60100F0EBB1 /* Resources */,
 				15BC458A2A04D74600F0EBB1 /* ShellScript */,
-				A4ADF1D44E976290441BB9CA /* [CP] Embed Pods Frameworks */,
+				ED1045FAD101F83184B6B9A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -383,7 +480,7 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
-		9E86645F640384F18CA7B80E /* [CP] Check Pods Manifest.lock */ = {
+		68B60A1BFB3B50AA6221BD60 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -405,7 +502,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A4ADF1D44E976290441BB9CA /* [CP] Embed Pods Frameworks */ = {
+		ED1045FAD101F83184B6B9A0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -430,15 +527,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BC45972A04DA3E00F0EBB1 /* UIButton+Combine.swift in Sources */,
+				152E52542A2BB1B300987CA8 /* AuthenticationTextFieldColorState.swift in Sources */,
+				152E52592A2BB20900987CA8 /* UIColor+Hex.swift in Sources */,
 				15BC45992A04DA4800F0EBB1 /* UIControl+Combine.swift in Sources */,
 				15BC45952A04DA0900F0EBB1 /* ViewModelProtocols.swift in Sources */,
 				15BC459D2A04DA5B00F0EBB1 /* UISwitch+Combine.swift in Sources */,
 				15BC455B2A04D60100F0EBB1 /* ViewController.swift in Sources */,
+				152E52472A2BB07C00987CA8 /* AuthenticationTextField.swift in Sources */,
+				152E52572A2BB1D800987CA8 /* UIColor+Palette.swift in Sources */,
 				15BC45932A04D9FD00F0EBB1 /* LayoutSupport.swift in Sources */,
 				15BC45912A04D9EE00F0EBB1 /* ConvenienceInit.swift in Sources */,
 				15BC459B2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift in Sources */,
+				152E52512A2BB17C00987CA8 /* AuthenticationTextField+Constant.swift in Sources */,
+				152E525D2A2BB24400987CA8 /* UISpacing.swift in Sources */,
 				15BC45572A04D60100F0EBB1 /* AppDelegate.swift in Sources */,
 				15BC45592A04D60100F0EBB1 /* SceneDelegate.swift in Sources */,
+				152E524E2A2BB12C00987CA8 /* SignUpViewController.swift in Sources */,
 				15BC459F2A04DA6300F0EBB1 /* UITextField+Combine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,7 +707,7 @@
 		};
 		15BC457E2A04D60200F0EBB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F98149911BB4FC03B2CCD23 /* Pods-StudyMatching.debug.xcconfig */;
+			baseConfigurationReference = 5B30AAFC8190EC3A6C9ACF6A /* Pods-StudyMatching.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -632,7 +736,7 @@
 		};
 		15BC457F2A04D60200F0EBB1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB52C67333A3C1EACE002D7C /* Pods-StudyMatching.release.xcconfig */;
+			baseConfigurationReference = 0ABB0897461646F8203105DC /* Pods-StudyMatching.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
