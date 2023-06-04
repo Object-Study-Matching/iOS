@@ -21,6 +21,12 @@ class MainTabBarController: UITabBarController {
         setTabBar()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setTabBarLayout()
+    }
+    
     private func setTabBarItem() {
         homeViewController.tabBarItem =
         UITabBarItem(title: nil, image: UIImage(systemName: "house.fill"), tag: 0)
@@ -36,6 +42,8 @@ class MainTabBarController: UITabBarController {
     }
     
     func setTabBar() {
+        self.tabBar.tintColor = .black
+        
         if #available(iOS 15, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -45,6 +53,21 @@ class MainTabBarController: UITabBarController {
         } else {
             UITabBar.appearance().barTintColor = UIColor.white
         }
+    }
+    
+    func setTabBarLayout() {
+        var tabFrame = self.tabBar.frame
+        tabFrame.size.height = 95
+        tabFrame.origin.y = self.view.frame.size.height - 95
+        self.tabBar.frame = tabFrame
+    }
+    
+}
+
+extension MainTabBarController: UITabBarControllerDelegate {
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        tabBar.backgroundColor = .black
     }
     
 }
