@@ -16,7 +16,9 @@ protocol AuthenticationTextFieldDelegate: AnyObject {
 
 final class AuthenticationTextField: UIView {
   // MARK: - Constant
-  typealias ColorState = AuthenticationTextFieldColorState
+  typealias InputState = AuthenticationTextFieldInputState
+  private var textMaxLength: Int
+  private var textMinLength: Int
   
   // MARK: - Properties
   private let textField = UITextField().set {
@@ -27,8 +29,14 @@ final class AuthenticationTextField: UIView {
     $0.sizeToFit()
   }
   
-  private var textMaxLength: Int = 40
-  private var textMinLength: Int = 0
+  @Published private var validState: InputState = .notEditing
+  
+  private var subscription = Set<AnyCancellable>()
+  
+  weak var delegate: AuthenticationTextFieldDelegate?
+  
+  var accessoryView: UIView?
+  
   var text: String {
     get {
       textField.text ?? ""
@@ -42,37 +50,34 @@ final class AuthenticationTextField: UIView {
     textField.changed
   }
   
-  @Published private var validState: ColorState = .notEditing
+  private var heightConstraint: NSLayoutConstraint!
   
-  private var subscription = Set<AnyCancellable>()
-  
-  var accessoryView: UIView?
-  
-  var heightConstraint: NSLayoutConstraint!
-  
-  weak var delegate: AuthenticationTextFieldDelegate?
-  
-  // MARK: - Properties
+  // MARK: - Lifecycle
   private override init(frame: CGRect) {
+    textMaxLength = 0
+    textMinLength = 0
     super.init(frame: frame)
-    translatesAutoresizingMaskIntoConstraints = false
-    layer.cornerRadius = Constant.radius
-    setBorderColor(.notEditing)
-    layer.borderWidth = 1
-    layer.borderColor = UIColor.Palette.grayLine.cgColor
-    textField.delegate = self
-    setupUI()
-    bind()
   }
   
   convenience init(
     with placeholder: String,
-    textMaxLength: Int = 40,
-    textMinLength: Int = 0) {
+    textMaxLength: Int = 30,
+    textMinLength: Int = 3
+  ) {
       self.init(frame: .zero)
       self.textMaxLength = textMaxLength
       self.textMinLength = textMinLength
       textField.placeholder = placeholder
+      translatesAutoresizingMaskIntoConstraints = false
+      setTextfieldBorderColor(.notEditing)
+      layer.cornerRadius = Constant.radius
+      layer.borderWidth = 1
+      layer.borderColor = UIColor.Palette.grayLine.cgColor
+      textField.delegate = self
+      setupUI()
+      bind()
+      backgroundColor = .white
+      setShadow()
     }
   
   required init?(coder: NSCoder) {
@@ -92,7 +97,7 @@ extension AuthenticationTextField {
   }
   
   @MainActor
-  func setBorderColor(_ state: ColorState) {
+  func setTextfieldBorderColor(_ state: InputState) {
     layer.borderColor = state.color.cgColor
   }
   
@@ -101,22 +106,6 @@ extension AuthenticationTextField {
     heightConstraint.isActive = false
     heightConstraint = heightAnchor.constraint(equalToConstant: height)
     heightConstraint.isActive = true
-  }
-  
-  @MainActor
-  func hideBorderLine() {
-    layer.borderWidth = 0
-  }
-  
-  @MainActor
-  func setBorderLine(with width: CGFloat) {
-    layer.borderWidth = width
-  }
-  
-  @MainActor
-  func setWhiteAndShadow() {
-    setBackgroundColor(.white)
-    setShadow()
   }
   
   func setContentType(_ type: UITextContentType) {
@@ -132,7 +121,7 @@ extension AuthenticationTextField {
   }
   
   func setValidState(
-    _ state: AuthenticationTextFieldColorState
+    _ state: AuthenticationTextFieldInputState
   ) {
     validState = state
   }
@@ -142,6 +131,7 @@ extension AuthenticationTextField {
     textField.textContentType = .oneTimeCode
   }
   
+  /// InputAccessoryview의 frame만 생성
   func setInputAccessoryView(with height: CGFloat) {
     accessoryView = UIView(
       frame: CGRect(
@@ -152,11 +142,6 @@ extension AuthenticationTextField {
           $0.translatesAutoresizingMaskIntoConstraints = false
         }
     textField.inputAccessoryView = accessoryView
-  }
-  
-  @MainActor
-  func setBackgroundColor(_ color: UIColor) {
-    backgroundColor = color
   }
   
   func setNotWorkingAuthCorrectionType() {
@@ -171,7 +156,7 @@ private extension AuthenticationTextField {
     $validState
       .receive(on: DispatchQueue.main)
       .sink {
-        self.setBorderColor($0)
+        self.setTextfieldBorderColor($0)
       }.store(in: &subscription)
   }
   
@@ -202,7 +187,7 @@ extension AuthenticationTextField: UITextFieldDelegate {
   
   func textFieldDidEndEditing(_ textField: UITextField) {
     if validState != .inputExcess {
-      setBorderColor(.notEditing)
+      setTextfieldBorderColor(.notEditing)
     }
     textField.text = (textField.text ?? "").trimmingCharacters(in: .whitespaces)
     textField.resignFirstResponder()
@@ -211,7 +196,7 @@ extension AuthenticationTextField: UITextFieldDelegate {
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if validState != .inputExcess {
-      setBorderColor(.notEditing)
+      setTextfieldBorderColor(.notEditing)
     }
     textField.text = (textField.text ?? "").trimmingCharacters(in: .whitespaces)
     textField.resignFirstResponder()
