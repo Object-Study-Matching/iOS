@@ -52,7 +52,12 @@ final class LoginView: UIView {
   }
   
   var loginHelperViewDelegate: LoginHelperViewDelegate? {
-    loginHelperView.delegate
+    get {
+      loginHelperView.delegate
+    }
+    set {
+      loginHelperView.delegate = newValue
+    }
   }
   // MARK: - LifeCycle
   private override init(frame: CGRect) {
@@ -92,8 +97,8 @@ extension LoginView {
       bottomAnchor.constraint(equalTo: superView.safeAreaLayoutGuide.bottomAnchor)])
   }
 }
-// MARK: - LayoutSupport
 
+// MARK: - LayoutSupport
 extension LoginView: LayoutSupport {
   func addSubviews() {
     _=[appTitleLabel, idTextfield, pwTextfield, loginButton, loginHelperView]
