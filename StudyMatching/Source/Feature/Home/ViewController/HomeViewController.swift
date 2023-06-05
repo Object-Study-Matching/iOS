@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UITableViewController {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     let searchTextFieldView = UIView().set {
         $0.backgroundColor = .white
@@ -36,10 +36,11 @@ class HomeViewController: UITableViewController {
         $0.setImage(UIImage(named: "addGroupButton"), for: .normal)
         $0.addTarget(HomeViewController.self, action: #selector(showGroupSettingPage), for: .touchUpInside)
     }
-    //let locationSelector = UIButton()
-    //TODO: 이 기능은 다른 버튼으로 대체될 수 있음 (ex: 우측상단 슬라이드 버튼)
+    // let locationSelector = UIButton()
     
-    //MARK: - LifeCycle
+    // 버튼추가TODO: 이 기능은 다른 버튼으로 대체될 수 있음 (ex: 우측상단 슬라이드 버튼)
+    
+    // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,17 +51,19 @@ class HomeViewController: UITableViewController {
     
 }
 
-//MARK: - Action Logic
+// MARK: - Action Logic
 
 extension HomeViewController {
  
     @objc func showGroupSettingPage() {
-        //TODO: showGroupSettingPage
+        
+        // present기능추가TODO: showGroupSettingPage
+        
     }
     
 }
 
-//MARK: LayoutSupport Protocol
+// MARK: LayoutSupport Protocol
 
 extension HomeViewController: LayoutSupport {
         
@@ -70,7 +73,8 @@ extension HomeViewController: LayoutSupport {
         searchTextFieldView.addSubview(searchTextField)
         self.view.addSubview(addStudyGroupButton)
         self.view.addSubview(searchOptionView)
-        //TODO: searchOptionView에 지역 옵션을 설정하는 버튼을 추가
+        
+        // 버튼addSubView추가TODO: searchOptionView에 지역 옵션을 설정하는 버튼을 추가
         
     }
     
