@@ -9,16 +9,16 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    let homeViewController = HomeViewController()
-    let chatViewController = ChatViewController()
-    let alertViewController = AlertViewController()
-    let profileViewController = ProfileViewContoller()
+    let homeViewController = UINavigationController(rootViewController: HomeViewController())
+    let chatViewController = UINavigationController(rootViewController: ChatViewController())
+    let alertViewController = UINavigationController(rootViewController: AlertViewController())
+    let profileViewController = UINavigationController(rootViewController: ProfileViewContoller())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setTabBarItem()
-        setTabBar()
+        setTabBarColor()
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,9 +41,28 @@ class MainTabBarController: UITabBarController {
         [homeViewController, chatViewController, alertViewController, profileViewController]
     }
     
-    func setTabBar() {
-        self.tabBar.tintColor = .black
+}
+
+// MARK: - TabBarSetting
+
+extension MainTabBarController {
+    
+    // TabBar의 모양을 구성하는 func
+    func setTabBarLayout() {
+        var tabFrame = self.tabBar.frame
+        tabFrame.size.height = 95
+        tabFrame.origin.y = self.view.frame.size.height - 95
+        self.tabBar.frame = tabFrame
         
+        self.tabBar.tintColor = .label
+        self.tabBar.layer.cornerRadius = 20
+        self.tabBar.layer.masksToBounds = true
+        self.tabBar.layer.borderColor = UIColor.lightGray.cgColor
+        self.tabBar.layer.borderWidth = 0.4
+    }
+    
+    // TabBar의 Color를 구성하는 func
+    func setTabBarColor() {
         if #available(iOS 15, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -55,17 +74,11 @@ class MainTabBarController: UITabBarController {
         }
     }
     
-    func setTabBarLayout() {
-        var tabFrame = self.tabBar.frame
-        tabFrame.size.height = 95
-        tabFrame.origin.y = self.view.frame.size.height - 95
-        self.tabBar.frame = tabFrame
-    }
-    
 }
 
 extension MainTabBarController: UITabBarControllerDelegate {
     
+    // TabBar icon의 Color값을 변경함
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         tabBar.backgroundColor = .black
     }

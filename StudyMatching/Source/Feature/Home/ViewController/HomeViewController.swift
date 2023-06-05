@@ -32,9 +32,9 @@ class HomeViewController: UITableViewController {
         $0.image = image
     }
     
-    let addStudyGroupButton = UIButton().set {
+    lazy var addStudyGroupButton = UIButton().set {
         $0.setImage(UIImage(named: "addGroupButton"), for: .normal)
-        $0.addTarget(HomeViewController.self, action: #selector(showGroupSettingPage), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(showGroupSettingPage), for: .touchUpInside)
     }
     // let locationSelector = UIButton()
     
@@ -46,7 +46,9 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        searchTextField.delegate = self
         setupUI()
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
 }
@@ -57,8 +59,21 @@ extension HomeViewController {
  
     @objc func showGroupSettingPage() {
         
+        print("push showGroupSettingPage")
+        
         // present기능추가TODO: showGroupSettingPage
         
+    }
+    
+}
+
+extension HomeViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.text = (textField.text ?? "").trimmingCharacters(in: .whitespaces)
+        searchTextField.resignFirstResponder()
+        print(textField.text ?? "")
+        return true
     }
     
 }
@@ -82,10 +97,9 @@ extension HomeViewController: LayoutSupport {
         
         self.searchTextFieldView.translatesAutoresizingMaskIntoConstraints = false
         self.searchTextFieldView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(9)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).offset(25)
             make.trailing.equalTo(self.addStudyGroupButton.snp.leading).offset(-21)
-            make.bottom.equalTo(searchOptionView.snp.top)
             make.height.equalTo(50)
         }
         
@@ -94,8 +108,8 @@ extension HomeViewController: LayoutSupport {
             make.leading.equalTo(self.searchTextFieldView.snp.leading).offset(16)
             make.trailing.equalTo(self.searchTextField.snp.leading).offset(-3)
             make.centerY.equalTo(self.searchTextFieldView.snp.centerY)
-            make.height.equalTo(15).priority(UILayoutPriority(999))
-            make.width.equalTo(15).priority(UILayoutPriority(999))
+            make.height.equalTo(15).priority(UILayoutPriority(900))
+            make.width.equalTo(15).priority(UILayoutPriority(900))
         }
         
         self.searchTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -108,10 +122,9 @@ extension HomeViewController: LayoutSupport {
         
         self.addStudyGroupButton.translatesAutoresizingMaskIntoConstraints = false
         self.addStudyGroupButton.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(17)
             make.leading.equalTo(self.searchTextFieldView.snp.trailing).offset(21)
             make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).offset(-25)
-            make.bottom.equalTo(self.searchOptionView.snp.top).offset(-7)
+            make.centerY.equalTo(self.searchTextFieldView)
             make.height.equalTo(34)
             make.width.equalTo(34)
         }
