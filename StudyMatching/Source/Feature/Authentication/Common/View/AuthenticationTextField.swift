@@ -186,18 +186,14 @@ extension AuthenticationTextField: UITextFieldDelegate {
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
-    if validState != .inputExcess {
-      setTextfieldBorderColor(.notEditing)
-    }
+    setTextfieldBorderColor(.notEditing)
     textField.text = (textField.text ?? "").trimmingCharacters(in: .whitespaces)
     textField.resignFirstResponder()
     delegate?.textFieldDidEndEditing(textField)
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    if validState != .inputExcess {
-      setTextfieldBorderColor(.notEditing)
-    }
+    setTextfieldBorderColor(.notEditing)
     textField.text = (textField.text ?? "").trimmingCharacters(in: .whitespaces)
     textField.resignFirstResponder()
     delegate?.textFieldShouldReturn(textField)
