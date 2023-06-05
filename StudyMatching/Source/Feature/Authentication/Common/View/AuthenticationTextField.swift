@@ -14,11 +14,17 @@ protocol AuthenticationTextFieldDelegate: AnyObject {
   func textFieldShouldReturn(_ textField: UITextField)
 }
 
+protocol AuthenticationTFRightImageViewDelegate: AnyObject {
+  func tap()
+}
+
 final class AuthenticationTextField: UIView {
   // MARK: - Constant
   typealias InputState = AuthenticationTextFieldInputState
+  typealias RightViewImageCaes = AuthenticationTFRightViewImageCase
   private var textMaxLength: Int
   private var textMinLength: Int
+  private var height: CGFloat
   
   // MARK: - Properties
   private let textField = UITextField().set {
@@ -29,11 +35,24 @@ final class AuthenticationTextField: UIView {
     $0.sizeToFit()
   }
   
+  private lazy var rightImageView = UIImageView().set {
+    $0.translatesAutoresizingMaskIntoConstraints = false
+    $0.contentMode = .scaleAspectFill
+    let tap = UITapGestureRecognizer()
+    tap.addTarget(self, action: #selector(didTapRightImageView))
+    $0.addGestureRecognizer(tap)
+    $0.isUserInteractionEnabled = false
+  }
+  
   @Published private var validState: InputState = .notEditing
+  
+  @Published private var isHiddenRightAccessoryView = false
   
   private var subscription = Set<AnyCancellable>()
   
   weak var delegate: AuthenticationTextFieldDelegate?
+  
+  weak var imageViewDelegate: AuthenticationTFRightImageViewDelegate?
   
   var accessoryView: UIView?
   
@@ -56,6 +75,7 @@ final class AuthenticationTextField: UIView {
   private override init(frame: CGRect) {
     textMaxLength = 0
     textMinLength = 0
+    height = 55
     super.init(frame: frame)
   }
   
@@ -89,7 +109,7 @@ final class AuthenticationTextField: UIView {
   }
 }
 
-// MARK: - Public helpers
+// MARK: - Helper
 extension AuthenticationTextField {
   @MainActor
   func setPlaceHolder(_ text: String) {
@@ -103,6 +123,7 @@ extension AuthenticationTextField {
   
   @MainActor
   func setTextFieldHeight(_ height: CGFloat) {
+    self.height = height
     heightConstraint.isActive = false
     heightConstraint = heightAnchor.constraint(equalToConstant: height)
     heightConstraint.isActive = true
@@ -148,6 +169,40 @@ extension AuthenticationTextField {
     textField.autocorrectionType = .no
   }
   
+  // 텍스트필드 오른쪽에 삭제버튼이나, 비밀번호 보이기 등의 경우
+  func setLayoutRightImageView(_ spacing: UISpacing, imageCase: RightViewImageCaes) {
+    addSubview(rightImageView)
+    let height = height - (spacing.top + spacing.bottom)
+    NSLayoutConstraint.activate([
+      rightImageView.trailingAnchor.constraint(
+        equalTo: trailingAnchor,
+        constant: -spacing.trailing),
+      rightImageView.topAnchor.constraint(
+        equalTo: topAnchor,
+        constant: spacing.top),
+      rightImageView.bottomAnchor.constraint(
+        equalTo: bottomAnchor,
+        constant: spacing.bottom),
+      rightImageView.widthAnchor.constraint(
+        equalToConstant: height)])
+  }
+  
+  func setRightImageViewWorking() {
+    rightImageView.isUserInteractionEnabled = true
+    rightImageView.isHidden = false
+  }
+  
+  func setRightImageViewNotWorking() {
+    rightImageView.isUserInteractionEnabled = false
+    rightImageView.isHidden = true
+  }
+}
+
+// MARK: - Action
+extension AuthenticationTextField {
+  @objc func didTapRightImageView() {
+    imageViewDelegate?.tap()
+  }
 }
 
 // MARK: - Private Helper
@@ -216,11 +271,11 @@ extension AuthenticationTextField: UITextFieldDelegate {
 // MARK: - LayoutSupport
 extension AuthenticationTextField: LayoutSupport {
   func addSubviews() {
-    addSubview(textField)
+    _=[textField].map { addSubview($0) }
   }
   
   func setConstraints() {
-    heightConstraint = heightAnchor.constraint(equalToConstant: 55)
+    heightConstraint = heightAnchor.constraint(equalToConstant: height)
     NSLayoutConstraint.activate([
       heightConstraint,
       textField.leadingAnchor.constraint(
