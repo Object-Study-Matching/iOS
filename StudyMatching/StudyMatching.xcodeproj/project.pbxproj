@@ -16,7 +16,6 @@
 		152E52472A2BB07C00987CA8 /* AuthenticationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52462A2BB07C00987CA8 /* AuthenticationTextField.swift */; };
 		152E524E2A2BB12C00987CA8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E524D2A2BB12C00987CA8 /* SignUpViewController.swift */; };
 		152E52512A2BB17C00987CA8 /* AuthenticationTextField+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52502A2BB17C00987CA8 /* AuthenticationTextField+Constant.swift */; };
-		152E52542A2BB1B300987CA8 /* AuthenticationTextFieldInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52532A2BB1B300987CA8 /* AuthenticationTextFieldInputState.swift */; };
 		152E52572A2BB1D800987CA8 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52562A2BB1D800987CA8 /* UIColor+Palette.swift */; };
 		152E52592A2BB20900987CA8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52582A2BB20900987CA8 /* UIColor+Hex.swift */; };
 		152E525D2A2BB24400987CA8 /* UISpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E525C2A2BB24400987CA8 /* UISpacing.swift */; };
@@ -45,6 +44,7 @@
 		15BC459F2A04DA6300F0EBB1 /* UITextField+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC459E2A04DA6300F0EBB1 /* UITextField+Combine.swift */; };
 		4B4EE7E82A2F19C300CC62E8 /* StudyMatchingPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EE7E72A2F19C300CC62E8 /* StudyMatchingPostModel.swift */; };
 		4B7EF31D2A2E2EC000973AAD /* StudyMatchingPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7EF31C2A2E2EC000973AAD /* StudyMatchingPostCell.swift */; };
+		4BA067DD2A2F7D2000D88051 /* AuthenticationTextFieldInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52532A2BB1B300987CA8 /* AuthenticationTextFieldInputState.swift */; };
 		4BCF97E22A2CB42500F46DA1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97E12A2CB42500F46DA1 /* HomeViewController.swift */; };
 		4BCF97E62A2CB45A00F46DA1 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97E52A2CB45A00F46DA1 /* ChatViewController.swift */; };
 		4BCF97EA2A2CB49000F46DA1 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97E92A2CB49000F46DA1 /* AlertController.swift */; };
@@ -728,10 +728,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA067DD2A2F7D2000D88051 /* AuthenticationTextFieldInputState.swift in Sources */,
 				15BC45972A04DA3E00F0EBB1 /* UIButton+Combine.swift in Sources */,
-				152E52542A2BB1B300987CA8 /* AuthenticationTextFieldColorState.swift in Sources */,
 				4B4EE7E82A2F19C300CC62E8 /* StudyMatchingPostModel.swift in Sources */,
-				152E52542A2BB1B300987CA8 /* AuthenticationTextFieldInputState.swift in Sources */,
 				154C67FD2A2EFCA10043EB35 /* LoginConstant.swift in Sources */,
 				151DB92F2A2E710100AF3BED /* LoginHelperView+Constant.swift in Sources */,
 				4BCF97E22A2CB42500F46DA1 /* HomeViewController.swift in Sources */,

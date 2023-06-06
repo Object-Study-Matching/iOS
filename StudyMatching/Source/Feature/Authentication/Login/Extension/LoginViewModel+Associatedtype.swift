@@ -16,7 +16,7 @@ extension LoginViewModel: ViewModelAssociatedType {
     init(
       idTextFieldChanged: AnyPublisher<String, Never>,
       pwTextFieldChanged: AnyPublisher<String, Never>,
-      loginEvent: AnyPublisher<Void,Never>
+      loginEvent: AnyPublisher<Void, Never>
     ) {
       self.idTextFieldChanged = idTextFieldChanged
       self.pwTextFieldChanged = pwTextFieldChanged
