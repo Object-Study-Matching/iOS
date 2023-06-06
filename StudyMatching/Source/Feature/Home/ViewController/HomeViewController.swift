@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class HomeViewController: UITableViewController {
+class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -51,6 +51,7 @@ class HomeViewController: UITableViewController {
                                mainTitle: "함께 공모전 참가할 팀원 구해요",
                                subscrive: "K-해커톤, 함께할 디자이너, 백엔드 개발자 모십니다.")
     ]
+    let studyGroupMatchingPostTable = UITableView()
     
     // let locationSelector = UIButton()
     
@@ -63,16 +64,21 @@ class HomeViewController: UITableViewController {
         // Do any additional setup after loading the view.
         
         searchTextField.delegate = self
+        studyGroupMatchingPostTable.delegate = self
+        studyGroupMatchingPostTable.dataSource = self
         setupUI()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        tableView.separatorStyle = .none
+        studyGroupMatchingPostTable.separatorStyle = .none
+        
+        self.view.backgroundColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.register(StudyMatchingPostCell.self, forCellReuseIdentifier: "StudyMatchingPostCell")
-        self.tableView.reloadData()
+        studyGroupMatchingPostTable.register(StudyMatchingPostCell.self,
+                                             forCellReuseIdentifier: "StudyMatchingPostCell")
+        self.studyGroupMatchingPostTable.reloadData()
     }
     
 }
@@ -93,17 +99,17 @@ extension HomeViewController {
 
 // MARK: - UITableViewLogic
 
-extension HomeViewController {
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studyMatchingPost.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "StudyMatchingPostCell", for: indexPath)
             as? StudyMatchingPostCell {
             
@@ -120,7 +126,7 @@ extension HomeViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         // navigationPopTODO: - Group 모집 페이지로 이동
@@ -150,6 +156,7 @@ extension HomeViewController: LayoutSupport {
         searchTextFieldView.addSubview(searchTextField)
         self.view.addSubview(addStudyGroupButton)
         self.view.addSubview(searchOptionView)
+        self.view.addSubview(studyGroupMatchingPostTable)
         
         // 버튼addSubView추가TODO: searchOptionView에 지역 옵션을 설정하는 버튼을 추가
         
@@ -196,7 +203,16 @@ extension HomeViewController: LayoutSupport {
             make.top.equalTo(self.searchTextFieldView.snp.bottom)
             make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing)
+            make.bottom.equalTo(self.studyGroupMatchingPostTable.snp.top)
             make.height.equalTo(self.searchTextFieldView.snp.height)
+        }
+        
+        self.studyGroupMatchingPostTable.translatesAutoresizingMaskIntoConstraints = false
+        self.studyGroupMatchingPostTable.snp.makeConstraints { make in
+            make.top.equalTo(searchOptionView.snp.bottom)
+            make.leading.equalTo(self.view.snp.leading)
+            make.trailing.equalTo(self.view.snp.trailing)
+            make.bottom.equalTo(self.view.snp.bottom).offset(-95)
         }
         
     }
