@@ -23,7 +23,7 @@ final class LoginView: UIView {
   
   private let loginButton: UIButton = UIButton().set {
     $0.translatesAutoresizingMaskIntoConstraints = false
-    $0.backgroundColor = Constant.LoginButton.textBGColor
+    $0.backgroundColor = Constant.LoginButton.textBGhalfColor
     $0.layer.cornerRadius = Constant.LoginButton.cornerRadius
     let attrStr = NSMutableAttributedString(string: "로그인")
     let attributes: [NSAttributedString.Key: Any] = [
@@ -34,6 +34,7 @@ final class LoginView: UIView {
       attributes,
         range: NSRange(location: 0, length: "로그인".count))
     $0.setAttributedTitle(attrStr, for: .normal)
+    $0.isUserInteractionEnabled = false
   }
   
   private let loginHelperView = LoginHelperView()
@@ -48,7 +49,12 @@ final class LoginView: UIView {
   }
   
   var loginTap: AnyPublisher<Void, Never> {
-    loginButton.tap
+    loginButton
+      .tap
+      .subscribe(on: DispatchQueue.main)
+      .map {
+        UIView.animateShrinkAndBack(self.loginButton)
+      }.eraseToAnyPublisher()
   }
   
   var loginHelperViewDelegate: LoginHelperViewDelegate? {
@@ -64,11 +70,15 @@ final class LoginView: UIView {
     idTextfield = AuthenticationTextField(
       with: "아이디",
       textMaxLength: Constant.IdTextfield.textMaxLength,
-      textMinLength: Constant.IdTextfield.textMinLength)
+      textMinLength: Constant.IdTextfield.textMinLength).set {
+        $0.setClearTextMode(.whileEditing)
+      }
     pwTextfield  = AuthenticationTextField(
       with: "비밀번호",
       textMaxLength: Constant.PwTextfield.textMaxLength,
-      textMinLength: Constant.PwTextfield.textMinLength)
+      textMinLength: Constant.PwTextfield.textMinLength).set {
+        $0.setTextSecurityPasswordType()
+      }
     super.init(frame: frame)
     translatesAutoresizingMaskIntoConstraints = false
   }
@@ -96,6 +106,45 @@ extension LoginView {
         equalTo: superView.trailingAnchor),
       bottomAnchor.constraint(equalTo: superView.safeAreaLayoutGuide.bottomAnchor)])
   }
+  
+  @MainActor
+  func setLoginButtonWorking() {
+    loginButton.isUserInteractionEnabled = true
+    UIView.animate(
+      withDuration: 0.3) {
+        self.loginButton.backgroundColor = Constant.LoginButton.textBGColor
+      }
+  }
+  
+  func setLoginButtonNotWorking() {
+    loginButton.isUserInteractionEnabled = true
+    UIView.animate(
+      withDuration: 0.3) {
+        self.loginButton.backgroundColor = Constant.LoginButton.textBGhalfColor
+      }
+  }
+  
+  func hideKeyboard() {
+    idTextfield.hideKeyboard()
+    pwTextfield.hideKeyboard()
+  }
+  
+  func setIdEditingState(_ state: AuthenticationTextFieldInputState) {
+    idTextfield.setValidState(state)
+  }
+  
+  func setPwEditingState(_ state: AuthenticationTextFieldInputState) {
+    pwTextfield.setValidState(state)
+  }
+  
+  func getIdTextFieldFrame() -> CGRect {
+    idTextfield.frame
+  }
+  
+  func getPwTextFieldFrame() -> CGRect {
+    pwTextfield.frame
+  }
+  
 }
 
 // MARK: - LayoutSupport
