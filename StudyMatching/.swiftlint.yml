@@ -16,10 +16,12 @@ line_length:
 
 nesting:
   type_level:
-    warning: 3
+    warning: 5
     error: 6
   function_level:
     warning: 5
     error: 10
 
-
+cyclomatic_complexity:
+  warning: 18
+  error: 20

@@ -13,7 +13,7 @@ extension AuthenticationTextField {
     static let textSize: CGFloat = 14
     static let radius: CGFloat = 8
     enum EdgeColor {
-      static let normal: UIColor = .Palette.edgeLine
+      static let normal: UIColor = .black
       static let correct: UIColor = .Palette.primary
       static let error: UIColor = .Palette.errorRed
     }

@@ -7,14 +7,14 @@
 
 import UIKit
 
-enum AuthenticationTextFieldColorState {
+enum AuthenticationTextFieldInputState {
   case notEditing
   case editing
   case inputExcess
   
   var color: UIColor {
     switch self {
-    case .notEditing: return .Palette.grayLine
+    case .notEditing: return .black
     case .editing: return .Palette.primary
     case .inputExcess: return .Palette.errorRed
     }
