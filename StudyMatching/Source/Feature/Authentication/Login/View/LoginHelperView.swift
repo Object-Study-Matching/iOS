@@ -64,14 +64,17 @@ final class LoginHelperView: UIView {
 // MARK: - Action
 extension LoginHelperView {
   @objc func tapPw() {
-    delegate?.gotoFindPassword()
+    UIView.animateHalfAlphaAndBack(pwLabel)
+    self.delegate?.gotoFindPassword()
   }
   
   @objc func tapId() {
-    delegate?.gotoFindId()
+    UIView.animateHalfAlphaAndBack(idLabel)
+    self.delegate?.gotoFindId()
   }
   
   @objc func tapSignUp() {
+    UIView.animateHalfAlphaAndBack(signUpLabel)
     delegate?.gotoSignUp()
   }
 }
