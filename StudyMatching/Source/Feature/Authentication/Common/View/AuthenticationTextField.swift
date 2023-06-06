@@ -129,6 +129,10 @@ extension AuthenticationTextField {
     heightConstraint.isActive = true
   }
   
+  func setClearTextMode(_ mode: UITextField.ViewMode) {
+    textField.clearButtonMode = mode
+  }
+  
   func setContentType(_ type: UITextContentType) {
     textField.textContentType = type
   }
