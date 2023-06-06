@@ -14,9 +14,17 @@ protocol AuthenticationTextFieldDelegate: AnyObject {
   func textFieldShouldReturn(_ textField: UITextField)
 }
 
+protocol AuthenticationTFRightImageViewDelegate: AnyObject {
+  func tap()
+}
+
 final class AuthenticationTextField: UIView {
   // MARK: - Constant
-  typealias ColorState = AuthenticationTextFieldColorState
+  typealias InputState = AuthenticationTextFieldInputState
+  typealias RightViewImageCaes = AuthenticationTFRightViewImageCase
+  private var textMaxLength: Int
+  private var textMinLength: Int
+  private var height: CGFloat
   
   // MARK: - Properties
   private let textField = UITextField().set {
@@ -27,8 +35,27 @@ final class AuthenticationTextField: UIView {
     $0.sizeToFit()
   }
   
-  private var textMaxLength: Int = 40
-  private var textMinLength: Int = 0
+  private lazy var rightImageView = UIImageView().set {
+    $0.translatesAutoresizingMaskIntoConstraints = false
+    $0.contentMode = .scaleAspectFill
+    let tap = UITapGestureRecognizer()
+    tap.addTarget(self, action: #selector(didTapRightImageView))
+    $0.addGestureRecognizer(tap)
+    $0.isUserInteractionEnabled = false
+  }
+  
+  @Published private var validState: InputState = .notEditing
+  
+  @Published private var isHiddenRightAccessoryView = false
+  
+  private var subscription = Set<AnyCancellable>()
+  
+  weak var delegate: AuthenticationTextFieldDelegate?
+  
+  weak var imageViewDelegate: AuthenticationTFRightImageViewDelegate?
+  
+  var accessoryView: UIView?
+  
   var text: String {
     get {
       textField.text ?? ""
@@ -42,37 +69,35 @@ final class AuthenticationTextField: UIView {
     textField.changed
   }
   
-  @Published private var validState: ColorState = .notEditing
+  private var heightConstraint: NSLayoutConstraint!
   
-  private var subscription = Set<AnyCancellable>()
-  
-  var accessoryView: UIView?
-  
-  var heightConstraint: NSLayoutConstraint!
-  
-  weak var delegate: AuthenticationTextFieldDelegate?
-  
-  // MARK: - Properties
+  // MARK: - Lifecycle
   private override init(frame: CGRect) {
+    textMaxLength = 0
+    textMinLength = 0
+    height = 55
     super.init(frame: frame)
-    translatesAutoresizingMaskIntoConstraints = false
-    layer.cornerRadius = Constant.radius
-    setBorderColor(.notEditing)
-    layer.borderWidth = 1
-    layer.borderColor = UIColor.Palette.grayLine.cgColor
-    textField.delegate = self
-    setupUI()
-    bind()
   }
   
   convenience init(
     with placeholder: String,
-    textMaxLength: Int = 40,
-    textMinLength: Int = 0) {
+    textMaxLength: Int = 30,
+    textMinLength: Int = 3
+  ) {
       self.init(frame: .zero)
       self.textMaxLength = textMaxLength
       self.textMinLength = textMinLength
       textField.placeholder = placeholder
+      translatesAutoresizingMaskIntoConstraints = false
+      setTextfieldBorderColor(.notEditing)
+      layer.cornerRadius = Constant.radius
+      layer.borderWidth = 1
+      layer.borderColor = UIColor.Palette.grayLine.cgColor
+      textField.delegate = self
+      setupUI()
+      bind()
+      backgroundColor = .white
+      setShadow()
     }
   
   required init?(coder: NSCoder) {
@@ -84,7 +109,7 @@ final class AuthenticationTextField: UIView {
   }
 }
 
-// MARK: - Public helpers
+// MARK: - Helper
 extension AuthenticationTextField {
   @MainActor
   func setPlaceHolder(_ text: String) {
@@ -92,31 +117,20 @@ extension AuthenticationTextField {
   }
   
   @MainActor
-  func setBorderColor(_ state: ColorState) {
+  func setTextfieldBorderColor(_ state: InputState) {
     layer.borderColor = state.color.cgColor
   }
   
   @MainActor
   func setTextFieldHeight(_ height: CGFloat) {
+    self.height = height
     heightConstraint.isActive = false
     heightConstraint = heightAnchor.constraint(equalToConstant: height)
     heightConstraint.isActive = true
   }
   
-  @MainActor
-  func hideBorderLine() {
-    layer.borderWidth = 0
-  }
-  
-  @MainActor
-  func setBorderLine(with width: CGFloat) {
-    layer.borderWidth = width
-  }
-  
-  @MainActor
-  func setWhiteAndShadow() {
-    setBackgroundColor(.white)
-    setShadow()
+  func setClearTextMode(_ mode: UITextField.ViewMode) {
+    textField.clearButtonMode = mode
   }
   
   func setContentType(_ type: UITextContentType) {
@@ -132,7 +146,7 @@ extension AuthenticationTextField {
   }
   
   func setValidState(
-    _ state: AuthenticationTextFieldColorState
+    _ state: AuthenticationTextFieldInputState
   ) {
     validState = state
   }
@@ -142,6 +156,7 @@ extension AuthenticationTextField {
     textField.textContentType = .oneTimeCode
   }
   
+  /// InputAccessoryview의 frame만 생성
   func setInputAccessoryView(with height: CGFloat) {
     accessoryView = UIView(
       frame: CGRect(
@@ -154,15 +169,44 @@ extension AuthenticationTextField {
     textField.inputAccessoryView = accessoryView
   }
   
-  @MainActor
-  func setBackgroundColor(_ color: UIColor) {
-    backgroundColor = color
-  }
-  
   func setNotWorkingAuthCorrectionType() {
     textField.autocorrectionType = .no
   }
   
+  // 텍스트필드 오른쪽에 삭제버튼이나, 비밀번호 보이기 등의 경우
+  func setLayoutRightImageView(_ spacing: UISpacing, imageCase: RightViewImageCaes) {
+    addSubview(rightImageView)
+    let height = height - (spacing.top + spacing.bottom)
+    NSLayoutConstraint.activate([
+      rightImageView.trailingAnchor.constraint(
+        equalTo: trailingAnchor,
+        constant: -spacing.trailing),
+      rightImageView.topAnchor.constraint(
+        equalTo: topAnchor,
+        constant: spacing.top),
+      rightImageView.bottomAnchor.constraint(
+        equalTo: bottomAnchor,
+        constant: spacing.bottom),
+      rightImageView.widthAnchor.constraint(
+        equalToConstant: height)])
+  }
+  
+  func setRightImageViewWorking() {
+    rightImageView.isUserInteractionEnabled = true
+    rightImageView.isHidden = false
+  }
+  
+  func setRightImageViewNotWorking() {
+    rightImageView.isUserInteractionEnabled = false
+    rightImageView.isHidden = true
+  }
+}
+
+// MARK: - Action
+extension AuthenticationTextField {
+  @objc func didTapRightImageView() {
+    imageViewDelegate?.tap()
+  }
 }
 
 // MARK: - Private Helper
@@ -171,7 +215,7 @@ private extension AuthenticationTextField {
     $validState
       .receive(on: DispatchQueue.main)
       .sink {
-        self.setBorderColor($0)
+        self.setTextfieldBorderColor($0)
       }.store(in: &subscription)
   }
   
@@ -201,18 +245,14 @@ extension AuthenticationTextField: UITextFieldDelegate {
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
-    if validState != .inputExcess {
-      setBorderColor(.notEditing)
-    }
+    setTextfieldBorderColor(.notEditing)
     textField.text = (textField.text ?? "").trimmingCharacters(in: .whitespaces)
     textField.resignFirstResponder()
     delegate?.textFieldDidEndEditing(textField)
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    if validState != .inputExcess {
-      setBorderColor(.notEditing)
-    }
+    setTextfieldBorderColor(.notEditing)
     textField.text = (textField.text ?? "").trimmingCharacters(in: .whitespaces)
     textField.resignFirstResponder()
     delegate?.textFieldShouldReturn(textField)
@@ -235,11 +275,11 @@ extension AuthenticationTextField: UITextFieldDelegate {
 // MARK: - LayoutSupport
 extension AuthenticationTextField: LayoutSupport {
   func addSubviews() {
-    addSubview(textField)
+    _=[textField].map { addSubview($0) }
   }
   
   func setConstraints() {
-    heightConstraint = heightAnchor.constraint(equalToConstant: 55)
+    heightConstraint = heightAnchor.constraint(equalToConstant: height)
     NSLayoutConstraint.activate([
       heightConstraint,
       textField.leadingAnchor.constraint(
