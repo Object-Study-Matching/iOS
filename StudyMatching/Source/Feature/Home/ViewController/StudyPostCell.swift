@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class StudyMatchingPostCell: UITableViewCell {
+class StudyPostCell: UITableViewCell {
     
     // MARK: - Properties
     
@@ -99,7 +99,7 @@ class StudyMatchingPostCell: UITableViewCell {
 
 // MARK: - LayoutSupport Protocol
 
-extension StudyMatchingPostCell: LayoutSupport {
+extension StudyPostCell: LayoutSupport {
     func addSubviews() {
         self.addSubview(profileContainerView)
         profileContainerView.addSubview(profileImageView)
