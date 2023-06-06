@@ -32,6 +32,7 @@ extension LoginView {
       static let textSize = 14.0
       static let spacing: UISpacing = .init(leading: 24, top: 12, trailing: 24)
       static let textBGColor = UIColor.Palette.primary
+      static let textBGhalfColor = UIColor.Palette.primary.withAlphaComponent(0.7)
       static let textColor = UIColor.white
       static let height = 55.0
       static let cornerRadius = 8.0
