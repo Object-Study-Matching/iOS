@@ -84,10 +84,6 @@ class DetailStudyMatchingViewController: UIViewController {
     setpostValue()
   }
   
-  deinit {
-    print("상세 페이지가 소멸됨")
-  }
-  
   func setNavigationBar() {
     self.navigationController?.isNavigationBarHidden = false
     self.navigationItem.title = studyPostModel.mainTitle

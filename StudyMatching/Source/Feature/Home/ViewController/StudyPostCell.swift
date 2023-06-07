@@ -84,11 +84,6 @@ class StudyPostCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-    }
-    
     // postedAt를 UX를 위해 string으로 가공하는 func
     func studyPostedAt(at: Date) -> String {
         let currentDate = Date()
