@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class HomeViewController: UIViewController {
+class StudyPostViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -38,20 +38,20 @@ class HomeViewController: UIViewController {
     }
     
     var studyMatchingPost = [
-        StudyMatchingPostModel(profileImage: UIImage(named: "2fb3451f2790627112ebba6732cb7a49"),
+        StudyPostModel(profileImage: UIImage(named: "2fb3451f2790627112ebba6732cb7a49"),
                                userName: "양승현",
                                mainTitle: "대전대에서 swift 스터디 하실분 구해요!",
                                subscrive: "맥북만 있으면 모두 참가하실 수 있습니다."),
-        StudyMatchingPostModel(profileImage: UIImage(named: "2fb3451f2790627112ebba6732cb7a49"),
+        StudyPostModel(profileImage: UIImage(named: "2fb3451f2790627112ebba6732cb7a49"),
                                userName: "김석현",
                                mainTitle: "일렉기타 함께 배우실분??",
                                subscrive: "함께 연주해봐요!"),
-        StudyMatchingPostModel(profileImage: UIImage(named: "2e88faead86a9f0d3bc1009b2a11bff5"),
+        StudyPostModel(profileImage: UIImage(named: "2e88faead86a9f0d3bc1009b2a11bff5"),
                                userName: "이치훈",
                                mainTitle: "함께 공모전 참가할 팀원 구해요",
                                subscrive: "K-해커톤, 함께할 디자이너, 백엔드 개발자 모십니다.")
     ]
-    let studyGroupMatchingPostTable = UITableView()
+    let studyPostTableView = UITableView()
     
     // let locationSelector = UIButton()
     
@@ -64,28 +64,28 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         searchTextField.delegate = self
-        studyGroupMatchingPostTable.delegate = self
-        studyGroupMatchingPostTable.dataSource = self
+        studyPostTableView.delegate = self
+        studyPostTableView.dataSource = self
         setupUI()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        studyGroupMatchingPostTable.separatorStyle = .none
+        studyPostTableView.separatorStyle = .none
         
         self.view.backgroundColor = .white
+        studyPostTableView.register(StudyPostCell.self,
+                                             forCellReuseIdentifier: "StudyMatchingPostCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        studyGroupMatchingPostTable.register(StudyMatchingPostCell.self,
-                                             forCellReuseIdentifier: "StudyMatchingPostCell")
-        self.studyGroupMatchingPostTable.reloadData()
+        self.studyPostTableView.reloadData()
     }
     
 }
 
 // MARK: - Action Logic
 
-extension HomeViewController {
+extension StudyPostViewController {
  
     @objc func showGroupSettingPage() {
         
@@ -99,7 +99,7 @@ extension HomeViewController {
 
 // MARK: - UITableViewLogic
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension StudyPostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -111,7 +111,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "StudyMatchingPostCell", for: indexPath)
-            as? StudyMatchingPostCell {
+            as? StudyPostCell {
             
             cell.profileImageView.image = studyMatchingPost[indexPath.row].profileImage
             cell.userName.text = studyMatchingPost[indexPath.row].userName
@@ -122,7 +122,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         } else {
-            return StudyMatchingPostCell(style: .default, reuseIdentifier: "StudyMatchingPostCell")
+            return StudyPostCell(style: .default, reuseIdentifier: "StudyMatchingPostCell")
         }
     }
     
@@ -135,7 +135,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension HomeViewController: UITextFieldDelegate {
+extension StudyPostViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.text = (textField.text ?? "").trimmingCharacters(in: .whitespaces)
@@ -148,7 +148,7 @@ extension HomeViewController: UITextFieldDelegate {
 
 // MARK: LayoutSupport Protocol
 
-extension HomeViewController: LayoutSupport {
+extension StudyPostViewController: LayoutSupport {
         
     func addSubviews() {
         self.view.addSubview(searchTextFieldView)
@@ -156,7 +156,7 @@ extension HomeViewController: LayoutSupport {
         searchTextFieldView.addSubview(searchTextField)
         self.view.addSubview(addStudyGroupButton)
         self.view.addSubview(searchOptionView)
-        self.view.addSubview(studyGroupMatchingPostTable)
+        self.view.addSubview(studyPostTableView)
         
         // 버튼addSubView추가TODO: searchOptionView에 지역 옵션을 설정하는 버튼을 추가
         
@@ -203,12 +203,12 @@ extension HomeViewController: LayoutSupport {
             make.top.equalTo(self.searchTextFieldView.snp.bottom)
             make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing)
-            make.bottom.equalTo(self.studyGroupMatchingPostTable.snp.top)
+            make.bottom.equalTo(self.studyPostTableView.snp.top)
             make.height.equalTo(self.searchTextFieldView.snp.height)
         }
         
-        self.studyGroupMatchingPostTable.translatesAutoresizingMaskIntoConstraints = false
-        self.studyGroupMatchingPostTable.snp.makeConstraints { make in
+        self.studyPostTableView.translatesAutoresizingMaskIntoConstraints = false
+        self.studyPostTableView.snp.makeConstraints { make in
             make.top.equalTo(searchOptionView.snp.bottom)
             make.leading.equalTo(self.view.snp.leading)
             make.trailing.equalTo(self.view.snp.trailing)

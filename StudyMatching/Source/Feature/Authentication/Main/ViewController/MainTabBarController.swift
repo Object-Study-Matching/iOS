@@ -9,7 +9,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    let homeViewController = UINavigationController(rootViewController: HomeViewController())
+    let studyPostViewController = UINavigationController(rootViewController: StudyPostViewController())
     let chatViewController = UINavigationController(rootViewController: ChatViewController())
     let alertViewController = UINavigationController(rootViewController: AlertViewController())
     let profileViewController = UINavigationController(rootViewController: ProfileViewContoller())
@@ -28,7 +28,7 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setTabBarItem() {
-        homeViewController.tabBarItem =
+        studyPostViewController.tabBarItem =
         UITabBarItem(title: nil, image: UIImage(systemName: "house.fill"), tag: 0)
         chatViewController.tabBarItem =
         UITabBarItem(title: nil, image: UIImage(systemName: "ellipsis.message.fill"), tag: 1)
@@ -38,7 +38,7 @@ class MainTabBarController: UITabBarController {
         UITabBarItem(title: nil, image: UIImage(systemName: "person.crop.circle.fill"), tag: 3)
         
         self.viewControllers =
-        [homeViewController, chatViewController, alertViewController, profileViewController]
+        [studyPostViewController, chatViewController, alertViewController, profileViewController]
     }
     
 }

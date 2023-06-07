@@ -42,14 +42,15 @@
 		15BC459B2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC459A2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift */; };
 		15BC459D2A04DA5B00F0EBB1 /* UISwitch+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC459C2A04DA5B00F0EBB1 /* UISwitch+Combine.swift */; };
 		15BC459F2A04DA6300F0EBB1 /* UITextField+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC459E2A04DA6300F0EBB1 /* UITextField+Combine.swift */; };
-		4B4EE7E82A2F19C300CC62E8 /* StudyMatchingPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EE7E72A2F19C300CC62E8 /* StudyMatchingPostModel.swift */; };
-		4B7EF31D2A2E2EC000973AAD /* StudyMatchingPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7EF31C2A2E2EC000973AAD /* StudyMatchingPostCell.swift */; };
+		4B4EE7E82A2F19C300CC62E8 /* StudyPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EE7E72A2F19C300CC62E8 /* StudyPostModel.swift */; };
+		4B7EF31D2A2E2EC000973AAD /* StudyPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7EF31C2A2E2EC000973AAD /* StudyPostCell.swift */; };
 		4BA067DD2A2F7D2000D88051 /* AuthenticationTextFieldInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52532A2BB1B300987CA8 /* AuthenticationTextFieldInputState.swift */; };
-		4BCF97E22A2CB42500F46DA1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97E12A2CB42500F46DA1 /* HomeViewController.swift */; };
+		4BCF97E22A2CB42500F46DA1 /* StudyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97E12A2CB42500F46DA1 /* StudyPostViewController.swift */; };
 		4BCF97E62A2CB45A00F46DA1 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97E52A2CB45A00F46DA1 /* ChatViewController.swift */; };
 		4BCF97EA2A2CB49000F46DA1 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97E92A2CB49000F46DA1 /* AlertController.swift */; };
 		4BCF97EE2A2CB4C300F46DA1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97ED2A2CB4C300F46DA1 /* ProfileViewController.swift */; };
 		4BCF97F22A2CB68500F46DA1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97F12A2CB68500F46DA1 /* MainTabBarController.swift */; };
+		4BEE7B3F2A2FAF12005759DA /* StudyFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE7B3E2A2FAF12005759DA /* StudyFeedViewController.swift */; };
 		954B3EB3907231847C684CA5 /* Pods_StudyMatching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EDE21FB6B04EE8FD95D3374 /* Pods_StudyMatching.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,13 +114,14 @@
 		15BC459C2A04DA5B00F0EBB1 /* UISwitch+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwitch+Combine.swift"; sourceTree = "<group>"; };
 		15BC459E2A04DA6300F0EBB1 /* UITextField+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Combine.swift"; sourceTree = "<group>"; };
 		2EDE21FB6B04EE8FD95D3374 /* Pods_StudyMatching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMatching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B4EE7E72A2F19C300CC62E8 /* StudyMatchingPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMatchingPostModel.swift; sourceTree = "<group>"; };
-		4B7EF31C2A2E2EC000973AAD /* StudyMatchingPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMatchingPostCell.swift; sourceTree = "<group>"; };
-		4BCF97E12A2CB42500F46DA1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4B4EE7E72A2F19C300CC62E8 /* StudyPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPostModel.swift; sourceTree = "<group>"; };
+		4B7EF31C2A2E2EC000973AAD /* StudyPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPostCell.swift; sourceTree = "<group>"; };
+		4BCF97E12A2CB42500F46DA1 /* StudyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPostViewController.swift; sourceTree = "<group>"; };
 		4BCF97E52A2CB45A00F46DA1 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		4BCF97E92A2CB49000F46DA1 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		4BCF97ED2A2CB4C300F46DA1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4BCF97F12A2CB68500F46DA1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		4BEE7B3E2A2FAF12005759DA /* StudyFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyFeedViewController.swift; sourceTree = "<group>"; };
 		CB726A973741D7AD5578A1CE /* Pods-StudyMatching.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.debug.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -438,7 +440,7 @@
 		4B4EE7E62A2F199100CC62E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4B4EE7E72A2F19C300CC62E8 /* StudyMatchingPostModel.swift */,
+				4B4EE7E72A2F19C300CC62E8 /* StudyPostModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -455,8 +457,9 @@
 		4BCF97E02A2CB40300F46DA1 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4BCF97E12A2CB42500F46DA1 /* HomeViewController.swift */,
-				4B7EF31C2A2E2EC000973AAD /* StudyMatchingPostCell.swift */,
+				4BCF97E12A2CB42500F46DA1 /* StudyPostViewController.swift */,
+				4B7EF31C2A2E2EC000973AAD /* StudyPostCell.swift */,
+				4BEE7B3E2A2FAF12005759DA /* StudyFeedViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -730,10 +733,10 @@
 			files = (
 				4BA067DD2A2F7D2000D88051 /* AuthenticationTextFieldInputState.swift in Sources */,
 				15BC45972A04DA3E00F0EBB1 /* UIButton+Combine.swift in Sources */,
-				4B4EE7E82A2F19C300CC62E8 /* StudyMatchingPostModel.swift in Sources */,
+				4B4EE7E82A2F19C300CC62E8 /* StudyPostModel.swift in Sources */,
 				154C67FD2A2EFCA10043EB35 /* LoginConstant.swift in Sources */,
 				151DB92F2A2E710100AF3BED /* LoginHelperView+Constant.swift in Sources */,
-				4BCF97E22A2CB42500F46DA1 /* HomeViewController.swift in Sources */,
+				4BCF97E22A2CB42500F46DA1 /* StudyPostViewController.swift in Sources */,
 				151DB9202A2E50BB00AF3BED /* LoginViewController.swift in Sources */,
 				152E52592A2BB20900987CA8 /* UIColor+Hex.swift in Sources */,
 				151DB9292A2E62BE00AF3BED /* LoginHelperViewDelegate.swift in Sources */,
@@ -752,9 +755,10 @@
 				154C67F32A2EF5A30043EB35 /* UIView+AnimateHalfAlphaAndBack.swift in Sources */,
 				15BC459B2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift in Sources */,
 				154C67F62A2EF93B0043EB35 /* LoginViewModel.swift in Sources */,
+				4BEE7B3F2A2FAF12005759DA /* StudyFeedViewController.swift in Sources */,
 				152E52512A2BB17C00987CA8 /* AuthenticationTextField+Constant.swift in Sources */,
 				152E525D2A2BB24400987CA8 /* UISpacing.swift in Sources */,
-				4B7EF31D2A2E2EC000973AAD /* StudyMatchingPostCell.swift in Sources */,
+				4B7EF31D2A2E2EC000973AAD /* StudyPostCell.swift in Sources */,
 				151DB92C2A2E70D200AF3BED /* LoginView+Constant.swift in Sources */,
 				151DB9262A2E621F00AF3BED /* LoginHelperView.swift in Sources */,
 				15BC45572A04D60100F0EBB1 /* AppDelegate.swift in Sources */,
