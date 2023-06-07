@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		138C2DBD2A30C0FD00F5FB40 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138C2DBC2A30C0FD00F5FB40 /* ChatCell.swift */; };
+		138C2DC02A30D51100F5FB40 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138C2DBF2A30D51100F5FB40 /* ChatModel.swift */; };
+		138C2DC32A30FD0900F5FB40 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138C2DC22A30FD0900F5FB40 /* ChatViewModel.swift */; };
 		151DB9202A2E50BB00AF3BED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DB91F2A2E50BB00AF3BED /* LoginViewController.swift */; };
 		151DB9232A2E5CBA00AF3BED /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DB9222A2E5CBA00AF3BED /* LoginView.swift */; };
 		151DB9262A2E621F00AF3BED /* LoginHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DB9252A2E621F00AF3BED /* LoginHelperView.swift */; };
@@ -73,6 +76,9 @@
 
 /* Begin PBXFileReference section */
 		107E61E7D5C0FC965C2D3642 /* Pods-StudyMatching.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.release.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.release.xcconfig"; sourceTree = "<group>"; };
+		138C2DBC2A30C0FD00F5FB40 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		138C2DBF2A30D51100F5FB40 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		138C2DC22A30FD0900F5FB40 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		151DB91F2A2E50BB00AF3BED /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		151DB9222A2E5CBA00AF3BED /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		151DB9252A2E621F00AF3BED /* LoginHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHelperView.swift; sourceTree = "<group>"; };
@@ -151,6 +157,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		138C2DBB2A30C0B800F5FB40 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				138C2DBC2A30C0FD00F5FB40 /* ChatCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		138C2DBE2A30D50800F5FB40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				138C2DBF2A30D51100F5FB40 /* ChatModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		138C2DC12A30FCF500F5FB40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				138C2DC22A30FD0900F5FB40 /* ChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		151DB91D2A2E509800AF3BED /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +497,9 @@
 		4BCF97E32A2CB43700F46DA1 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				138C2DC12A30FCF500F5FB40 /* ViewModel */,
+				138C2DBE2A30D50800F5FB40 /* Model */,
+				138C2DBB2A30C0B800F5FB40 /* View */,
 				4BCF97E42A2CB44300F46DA1 /* ViewController */,
 			);
 			path = Chat;
@@ -754,6 +787,7 @@
 				15BC45912A04D9EE00F0EBB1 /* ConvenienceInit.swift in Sources */,
 				154C67F32A2EF5A30043EB35 /* UIView+AnimateHalfAlphaAndBack.swift in Sources */,
 				15BC459B2A04DA5000F0EBB1 /* UIControl+CombineInteraction.swift in Sources */,
+				138C2DBD2A30C0FD00F5FB40 /* ChatCell.swift in Sources */,
 				154C67F62A2EF93B0043EB35 /* LoginViewModel.swift in Sources */,
 				4BEE7B3F2A2FAF12005759DA /* StudyFeedViewController.swift in Sources */,
 				152E52512A2BB17C00987CA8 /* AuthenticationTextField+Constant.swift in Sources */,
@@ -765,9 +799,11 @@
 				154C67EA2A2E7DBB0043EB35 /* AuthenticationTFRightViewImageCase.swift in Sources */,
 				154C67F82A2EF97D0043EB35 /* LoginViewModel+Associatedtype.swift in Sources */,
 				154C67ED2A2EF4160043EB35 /* UIView+AnimateShrinkAndBack.swift in Sources */,
+				138C2DC02A30D51100F5FB40 /* ChatModel.swift in Sources */,
 				15BC45592A04D60100F0EBB1 /* SceneDelegate.swift in Sources */,
 				152E524E2A2BB12C00987CA8 /* SignUpViewController.swift in Sources */,
 				4BCF97E62A2CB45A00F46DA1 /* ChatViewController.swift in Sources */,
+				138C2DC32A30FD0900F5FB40 /* ChatViewModel.swift in Sources */,
 				15BC459F2A04DA6300F0EBB1 /* UITextField+Combine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
