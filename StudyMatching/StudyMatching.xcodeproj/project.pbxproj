@@ -458,8 +458,8 @@
 			isa = PBXGroup;
 			children = (
 				4BCF97E12A2CB42500F46DA1 /* StudyPostViewController.swift */,
-				4B7EF31C2A2E2EC000973AAD /* StudyPostCell.swift */,
 				4BEE7B3E2A2FAF12005759DA /* StudyFeedViewController.swift */,
+				4B7EF31C2A2E2EC000973AAD /* StudyPostCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

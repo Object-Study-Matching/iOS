@@ -11,9 +11,9 @@ struct StudyPostModel {
     
     var profileImage = UIImage(systemName: "person.crop.circle")
     var userName = "UserName"
-    var postedAt = Date()
+    var postedAt = "방금"
     var mainTitle = "Title"
-    var subscrive = "description"
+    var descrip = "description"
     
     var likeCount = 0
     var commentCount = 0
