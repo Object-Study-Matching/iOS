@@ -48,6 +48,7 @@
 		4B4EE7E82A2F19C300CC62E8 /* StudyPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EE7E72A2F19C300CC62E8 /* StudyPostModel.swift */; };
 		4B7EF31D2A2E2EC000973AAD /* StudyPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7EF31C2A2E2EC000973AAD /* StudyPostCell.swift */; };
 		4BA067DD2A2F7D2000D88051 /* AuthenticationTextFieldInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E52532A2BB1B300987CA8 /* AuthenticationTextFieldInputState.swift */; };
+		4BAF57CC2A30E5EF00DF5FF6 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAF57CB2A30E5EF00DF5FF6 /* CommentCell.swift */; };
 		4BCF97E22A2CB42500F46DA1 /* StudyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97E12A2CB42500F46DA1 /* StudyPostViewController.swift */; };
 		4BCF97E62A2CB45A00F46DA1 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97E52A2CB45A00F46DA1 /* ChatViewController.swift */; };
 		4BCF97EA2A2CB49000F46DA1 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97E92A2CB49000F46DA1 /* AlertController.swift */; };
@@ -122,6 +123,7 @@
 		2EDE21FB6B04EE8FD95D3374 /* Pods_StudyMatching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyMatching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4EE7E72A2F19C300CC62E8 /* StudyPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPostModel.swift; sourceTree = "<group>"; };
 		4B7EF31C2A2E2EC000973AAD /* StudyPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPostCell.swift; sourceTree = "<group>"; };
+		4BAF57CB2A30E5EF00DF5FF6 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		4BCF97E12A2CB42500F46DA1 /* StudyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPostViewController.swift; sourceTree = "<group>"; };
 		4BCF97E52A2CB45A00F46DA1 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		4BCF97E92A2CB49000F46DA1 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -488,8 +490,9 @@
 			isa = PBXGroup;
 			children = (
 				4BCF97E12A2CB42500F46DA1 /* StudyPostViewController.swift */,
-				4B7EF31C2A2E2EC000973AAD /* StudyPostCell.swift */,
 				4BEE7B3E2A2FAF12005759DA /* StudyFeedViewController.swift */,
+				4B7EF31C2A2E2EC000973AAD /* StudyPostCell.swift */,
+				4BAF57CB2A30E5EF00DF5FF6 /* CommentCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				154C67F62A2EF93B0043EB35 /* LoginViewModel.swift in Sources */,
 				4BEE7B3F2A2FAF12005759DA /* StudyFeedViewController.swift in Sources */,
 				152E52512A2BB17C00987CA8 /* AuthenticationTextField+Constant.swift in Sources */,
+				4BAF57CC2A30E5EF00DF5FF6 /* CommentCell.swift in Sources */,
 				152E525D2A2BB24400987CA8 /* UISpacing.swift in Sources */,
 				4B7EF31D2A2E2EC000973AAD /* StudyPostCell.swift in Sources */,
 				151DB92C2A2E70D200AF3BED /* LoginView+Constant.swift in Sources */,
