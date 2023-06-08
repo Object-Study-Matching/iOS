@@ -57,7 +57,7 @@ final class ChatCell: UITableViewCell {
 // MARK: - Configure
 extension ChatCell {
   func configure(_ chat: ChatModel) {
-    profileImageView.image = UIImage(named: "2fb3451f2790627112ebba6732cb7a49")!
+    profileImageView.image = UIImage(named: chat.profileImage)!
     userNameLabel.text = chat.userName
     descriptionLabel.text = chat.description
     dateLabel.text = chat.dateString

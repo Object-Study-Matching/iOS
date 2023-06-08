@@ -154,7 +154,7 @@ extension ChatViewController: LayoutSupport {
     }
     
     tableView.snp.makeConstraints {
-      $0.top.equalTo(stackView.snp.bottom)
+      $0.top.equalTo(stackView.snp.bottom).offset(12)
       $0.bottom.equalTo(view.safeAreaLayoutGuide)
       $0.leading.trailing.equalToSuperview().inset(16)
     }
@@ -169,6 +169,10 @@ extension ChatViewController: LayoutSupport {
 
 // MARK: - UITableViewDataSource
 extension ChatViewController: UITableViewDataSource {
+  func numberOfSections(in tableView: UITableView) -> Int {
+    1
+  }
+  
   func tableView(
     _ tableView: UITableView,
     numberOfRowsInSection section: Int
@@ -199,5 +203,9 @@ extension ChatViewController: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true) // selected cell color 제거
     
     input.didSelectedCell.send()
+  }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    scrollView.contentOffset.y
   }
 }
