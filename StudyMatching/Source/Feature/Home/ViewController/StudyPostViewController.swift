@@ -42,15 +42,21 @@ class StudyPostViewController: UIViewController {
     StudyPostModel(profileImage: UIImage(named: "userProfile1"),
                    userName: "양승현",
                    mainTitle: "대전대에서 swift 스터디 하실분 구해요!",
-                   descrip: "맥북만 있으면 모두 참가하실 수 있습니다."),
+                   descrip: "맥북만 있으면 모두 참가하실 수 있습니다.",
+                   likeCount: 2,
+                   commentCount: 2),
     StudyPostModel(profileImage: UIImage(named: "userProfile1"),
                    userName: "김석현",
                    mainTitle: "일렉기타 함께 배우실분??",
-                   descrip: "함께 연주해봐요!"),
+                   descrip: "함께 연주해봐요!",
+                   likeCount: 5,
+                   commentCount: 2),
     StudyPostModel(profileImage: UIImage(named: "userProfile2"),
                    userName: "이치훈",
                    mainTitle: "함께 공모전 참가할 팀원 구해요",
-                   descrip: "K-해커톤, 함께할 디자이너, 백엔드 개발자 모십니다.")
+                   descrip: "K-해커톤, 함께할 디자이너, 백엔드 개발자 모십니다.",
+                   likeCount: 3,
+                   commentCount: 2)
   ]
   let studyPostTableView = UITableView()
   
@@ -77,7 +83,7 @@ class StudyPostViewController: UIViewController {
     
   }
   
-  override func viewDidAppear(_ animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     self.navigationController?.isNavigationBarHidden = true
   }
   
@@ -97,7 +103,7 @@ extension StudyPostViewController {
   
 }
 
-// MARK: - UITableViewLogic
+// MARK: - UITableViewProtocol
 
 extension StudyPostViewController: UITableViewDelegate, UITableViewDataSource {
   
@@ -129,11 +135,13 @@ extension StudyPostViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     
-    self.navigationController?.pushViewController(DetailStudyMatchingViewController(
+    self.navigationController?.pushViewController(StudyFeedViewController(
       studyPostModel: studyMatchingPost[indexPath.row]), animated: true)
   }
   
 }
+
+// MARK: - UITextFieldProtocol
 
 extension StudyPostViewController: UITextFieldDelegate {
   

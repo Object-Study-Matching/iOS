@@ -8,7 +8,7 @@
 import SceneKit
 import UIKit
 
-class DetailStudyMatchingViewController: UIViewController {
+class StudyFeedViewController: UIViewController {
   
   // MARK: - Properties
   
@@ -16,12 +16,12 @@ class DetailStudyMatchingViewController: UIViewController {
   let profileContainerView = UIView()
   let userProfileImageView: UIImageView = UIImageView().set {
     $0.clipsToBounds = true
-    $0.layer.cornerRadius = 22
+    $0.layer.cornerRadius = 23
   }
-  let userNameLabel = UILabel().set {
+  let userNameLabel: UILabel = UILabel().set {
     $0.font = .boldSystemFont(ofSize: 13)
   }
-  let postedAtLabel = UILabel().set {
+  let postedAtLabel: UILabel = UILabel().set {
     $0.font = .systemFont(ofSize: 10)
     $0.textColor = .lightGray
   }
@@ -64,6 +64,15 @@ class DetailStudyMatchingViewController: UIViewController {
   
   var studyPostModel: StudyPostModel
   
+  var comments = [
+    CommentModel(profileImage: UIImage(named: "userProfile1"),
+                 userName: "홍길동",
+                 comment: "안녕하세요, 스터디 자리 남았나요??"),
+    CommentModel(profileImage: UIImage(named: "userProfile2"),
+                 userName: "스티븐잡스",
+                 comment: "함께 해요!")
+  ]
+  
   // MARK: - LifeCycle
   
   init(studyPostModel: StudyPostModel) {
@@ -78,10 +87,15 @@ class DetailStudyMatchingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.commentTableView.delegate = self
+    self.commentTableView.dataSource = self
+    
     setNavigationBar()
     self.view.backgroundColor = .white
     setupUI()
     setpostValue()
+    
+    commentTableView.register(CommentCell.self, forCellReuseIdentifier: "CommentCell")
   }
   
   func setNavigationBar() {
@@ -112,6 +126,7 @@ class DetailStudyMatchingViewController: UIViewController {
       range: NSRange(location: 0, length: "\(studyPostModel.likeCount)".count))
     likeButton.setAttributedTitle(likeAttrStr, for: .normal)
     
+    likeButton.setTitle("\(studyPostModel.likeCount)", for: .normal)
     let commentAttrStr = NSMutableAttributedString(string: "\(studyPostModel.commentCount)")
     let commentAttributes: [NSAttributedString.Key: Any] = [
       .foregroundColor: UIColor.lightGray,
@@ -125,9 +140,45 @@ class DetailStudyMatchingViewController: UIViewController {
   
 }
 
+// MARK: - UITableViewProtocol
+
+extension StudyFeedViewController: UITableViewDelegate, UITableViewDataSource {
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return comments.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath)
+        as? CommentCell {
+      
+      cell.userProfileImageView.image = comments[indexPath.row].profileImage
+      cell.userNameLabel.text = comments[indexPath.row].userName
+      cell.commentLabel.text = comments[indexPath.row].comment
+      
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "M/dd HH:mm"
+      cell.dateLabel.text = dateFormatter.string(for: comments[indexPath.row].postedDate)
+      
+      return cell
+    } else {
+      return CommentCell(style: .default, reuseIdentifier: "CommentCell")
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+  }
+  
+}
+
 // MARK: - Action
 
-extension DetailStudyMatchingViewController {
+extension StudyFeedViewController {
   
   @objc func popNavigation() {
     self.navigationController?.popViewController(animated: true)
@@ -137,7 +188,7 @@ extension DetailStudyMatchingViewController {
 
 // MARK: - LayoutSupport
 
-extension DetailStudyMatchingViewController: LayoutSupport {
+extension StudyFeedViewController: LayoutSupport {
   
   func addSubviews() {
     self.view.addSubview(feedView)
@@ -165,13 +216,15 @@ extension DetailStudyMatchingViewController: LayoutSupport {
       $0.leading.equalTo(self.view.safeAreaLayoutGuide)
       $0.trailing.equalTo(self.view.safeAreaLayoutGuide)
       $0.bottom.equalTo(commentTableView.snp.top)
-      $0.height.equalTo(200)
     }
     
     setProfileContainerConstraint()
     setPostContainerViewConstraint()
     setInteractionStackViewConstraint()
+    
   }
+  
+  // ------------------------------------------------------------------------
   
   func setProfileContainerConstraint() {
     self.profileContainerView.snp.makeConstraints {
@@ -212,24 +265,25 @@ extension DetailStudyMatchingViewController: LayoutSupport {
     }
     
     self.titleLable.snp.makeConstraints {
-      $0.top.equalTo(postContainerView.snp.top).offset(10)
+      $0.top.equalTo(postContainerView.snp.top)
       $0.leading.equalTo(postContainerView.snp.leading).offset(24)
       $0.trailing.equalTo(postContainerView.snp.trailing).inset(24)
     }
     
     self.descripLabel.snp.makeConstraints {
-      $0.top.equalTo(titleLable).offset(8)
+      $0.top.equalTo(titleLable.snp.bottom).offset(8)
       $0.leading.equalTo(postContainerView.snp.leading).offset(24)
       $0.trailing.equalTo(postContainerView.snp.trailing).inset(24)
       $0.bottom.equalTo(postContainerView.snp.bottom)
+      $0.height.equalTo(75)
     }
   }
   
   func setInteractionStackViewConstraint() {
     self.interactionStackView.snp.makeConstraints {
-      $0.top.equalTo(postContainerView.snp.bottom).offset(5)
+      $0.top.equalTo(postContainerView.snp.bottom).offset(3)
       $0.leading.equalTo(feedView.snp.leading).offset(24)
-      $0.bottom.equalTo(feedView.snp.bottom).inset(15)
+      $0.bottom.equalTo(feedView.snp.bottom).inset(3)
     }
     
     self.commentTableView.snp.makeConstraints {
