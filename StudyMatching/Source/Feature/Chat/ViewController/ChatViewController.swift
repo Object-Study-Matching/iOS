@@ -52,16 +52,21 @@ final class ChatViewController: UIViewController {
     $0.addTarget(self, action: #selector(didTapStudyButton), for: .touchUpInside)
   }
   
+  private let navigationBarUnderLineView: UIView = .init().set {
+    $0.backgroundColor = UIColor.Palette.grayLine
+  }
+  
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
     setupUI()
+    setupStyles()
     bind()
   }
 }
 
-// MARK: - Helpers
+// MARK: - Bind
 extension ChatViewController {
   private func bind() {
     let output = viewModel.transform(input)
@@ -82,14 +87,15 @@ extension ChatViewController {
   }
   
   private func render(_ state: ChatViewModel.State) {
-    // outputTODO: - output logic
     switch state {
     case .changeToMessageCell:
-      print("쪽찌 section으로 바꿈")
+      print("change to message section")
+      changeButtonsStyle(clicked: messageButton, cleared: studyButton)
     case .changeToStudyCell:
-      print("스터디 section로 바꿈")
+      print("change to study section")
+      changeButtonsStyle(clicked: studyButton, cleared: messageButton)
     case .gotoMessageVC:
-      print("쪽지 VC로 화면전환")
+      print("push: ChatVC -> MessageVC")
     }
   }
   
@@ -102,6 +108,20 @@ extension ChatViewController {
     case .unexpected:
       print("DEBUG: Unexpected error occured")
     }
+  }
+}
+
+// MARK: - Helpers
+extension ChatViewController {
+  private func changeButtonsStyle(clicked: UIButton, cleared: UIButton) {
+    clicked.backgroundColor = .black
+    clicked.setTitleColor(.white, for: .normal)
+    cleared.backgroundColor = .white
+    cleared.setTitleColor(.black, for: .normal)
+  }
+  
+  private func setupStyles() {
+    self.title = "채팅"
   }
 }
 
@@ -119,14 +139,16 @@ extension ChatViewController {
 // MARK: - LayoutSupport
 extension ChatViewController: LayoutSupport {
   func addSubviews() {
-    view.addSubview(stackView)
+    navigationController?.navigationBar.addSubview(navigationBarUnderLineView)
+    
     _ = [messageButton, studyButton].map { stackView.addArrangedSubview($0) }
+    view.addSubview(stackView)
     view.addSubview(tableView)
   }
   
   func setConstraints() {
     stackView.snp.makeConstraints {
-      $0.top.equalTo(view.safeAreaLayoutGuide)
+      $0.top.equalTo(view.safeAreaLayoutGuide).inset(12)
       $0.leading.trailing.equalToSuperview().inset(42)
       $0.height.equalTo(42)
     }
@@ -135,6 +157,12 @@ extension ChatViewController: LayoutSupport {
       $0.top.equalTo(stackView.snp.bottom)
       $0.bottom.equalTo(view.safeAreaLayoutGuide)
       $0.leading.trailing.equalToSuperview().inset(16)
+    }
+    
+    navigationBarUnderLineView.snp.makeConstraints {
+      $0.bottom.equalToSuperview()
+      $0.height.equalTo(1)
+      $0.leading.trailing.equalToSuperview().inset(24)
     }
   }
 }
