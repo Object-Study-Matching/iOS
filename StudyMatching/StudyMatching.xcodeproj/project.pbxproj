@@ -52,6 +52,7 @@
 		4BCF97EE2A2CB4C300F46DA1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97ED2A2CB4C300F46DA1 /* ProfileViewController.swift */; };
 		4BCF97F22A2CB68500F46DA1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF97F12A2CB68500F46DA1 /* MainTabBarController.swift */; };
 		4BEE7B3F2A2FAF12005759DA /* StudyFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE7B3E2A2FAF12005759DA /* StudyFeedViewController.swift */; };
+		4BF7CB332A32151E00247D65 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7CB322A32151E00247D65 /* CommentModel.swift */; };
 		954B3EB3907231847C684CA5 /* Pods_StudyMatching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EDE21FB6B04EE8FD95D3374 /* Pods_StudyMatching.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +125,7 @@
 		4BCF97ED2A2CB4C300F46DA1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4BCF97F12A2CB68500F46DA1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		4BEE7B3E2A2FAF12005759DA /* StudyFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyFeedViewController.swift; sourceTree = "<group>"; };
+		4BF7CB322A32151E00247D65 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		CB726A973741D7AD5578A1CE /* Pods-StudyMatching.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyMatching.debug.xcconfig"; path = "Target Support Files/Pods-StudyMatching/Pods-StudyMatching.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -443,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				4B4EE7E72A2F19C300CC62E8 /* StudyPostModel.swift */,
+				4BF7CB322A32151E00247D65 /* CommentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				154C67FB2A2EFC660043EB35 /* LoginEntity.swift in Sources */,
 				15BC45952A04DA0900F0EBB1 /* ViewModelProtocols.swift in Sources */,
 				15BC459D2A04DA5B00F0EBB1 /* UISwitch+Combine.swift in Sources */,
+				4BF7CB332A32151E00247D65 /* CommentModel.swift in Sources */,
 				152E52472A2BB07C00987CA8 /* AuthenticationTextField.swift in Sources */,
 				152E52572A2BB1D800987CA8 /* UIColor+Palette.swift in Sources */,
 				15BC45932A04D9FD00F0EBB1 /* LayoutSupport.swift in Sources */,
