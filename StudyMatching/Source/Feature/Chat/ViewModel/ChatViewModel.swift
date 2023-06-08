@@ -9,10 +9,14 @@ import Combine
 import Foundation
 
 final class ChatViewModel {
-//  typealias Input = ChatViewModel.Input
-//  typealias State = ChatViewModel.State
-//  typealias ViewModelError = ChatViewModel.ViewModelError
   typealias Output = AnyPublisher<State, ViewModelError>
+  
+  // MARK: - Properties
+  private var model = ChatModel()
+}
+
+// MARK: - Input & Output & State
+extension ChatViewModel {
   struct Input {
     let didTapMessageButton: PassthroughSubject<Void, ViewModelError>
     let didTapStudyButton: PassthroughSubject<Void, ViewModelError>
@@ -41,6 +45,7 @@ final class ChatViewModel {
     case unexpected
   }
 }
+
 // MARK: - Transform
 extension ChatViewModel {
   func transform(_ input: Input) -> Output {
@@ -71,5 +76,24 @@ extension ChatViewModel {
       .map { State.gotoMessageVC }
       .setFailureType(to: ViewModelError.self)
       .eraseToAnyPublisher()
+  }
+}
+
+// MARK: - Public Helpers
+extension ChatViewModel {
+  func numberOfItemsInSection(_ isLetterButtonTap: Bool) -> Int {
+    if isLetterButtonTap {
+      return ChatModel.letterModels.count
+    } else {
+      return ChatModel.groupChatModels.count
+    }
+  }
+  
+  func fetchLetterModel(at item: Int) -> ChatModel.LetterModel {
+    return ChatModel.letterModels[item]
+  }
+  
+  func fetchGroupChatModel(at item: Int) -> ChatModel.GroupChatModel {
+    return ChatModel.groupChatModels[item]
   }
 }

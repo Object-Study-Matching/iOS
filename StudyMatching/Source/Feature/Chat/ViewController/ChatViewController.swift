@@ -12,12 +12,16 @@ import SnapKit
 
 final class ChatViewController: UIViewController {
   // MARK: - Properties
+  private var isLetterButtonTap = true
   private lazy var input = ChatViewModel.Input()
   private let viewModel = ChatViewModel()
   private var subscriptions = Set<AnyCancellable>()
-  private lazy var tableView: UITableView = .init().set {
-    $0.register(ChatCell.self, forCellReuseIdentifier: ChatCell.id)
-    
+  private lazy var collectionView: UICollectionView = .init(
+    frame: .zero,
+    collectionViewLayout: UICollectionViewFlowLayout()
+  ).set {
+    $0.register(ChatCell.self, forCellWithReuseIdentifier: ChatCell.id)
+    $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     $0.dataSource = self
     $0.delegate = self
   }
@@ -28,19 +32,20 @@ final class ChatViewController: UIViewController {
     $0.distribution = .fillEqually
   }
   
-  private lazy var messageButton: UIButton = .init().set {
+  private lazy var letterButton: UIButton = .init().set {
     $0.setTitle("쪽지", for: .normal)
     $0.titleLabel?.font = .systemFont(ofSize: 14)
-    $0.setTitleColor(.black, for: .normal)
     $0.tintColor = .blue
     $0.layer.cornerRadius = 12
     $0.layer.borderWidth = 1
     $0.layer.borderColor = UIColor.black.cgColor
+    $0.backgroundColor = .black
+    $0.setTitleColor(.white, for: .normal)
     
     $0.addTarget(self, action: #selector(didTapMessageButton), for: .touchUpInside)
   }
   
-  private lazy var studyButton: UIButton = .init().set {
+  private lazy var groupChatButton: UIButton = .init().set {
     $0.setTitle("스터디", for: .normal)
     $0.titleLabel?.font = .systemFont(ofSize: 14)
     $0.setTitleColor(.black, for: .normal)
@@ -89,11 +94,11 @@ extension ChatViewController {
   private func render(_ state: ChatViewModel.State) {
     switch state {
     case .changeToMessageCell:
-      print("change to message section")
-      changeButtonsStyle(clicked: messageButton, cleared: studyButton)
+      changeButtonsStyle(clicked: letterButton, cleared: groupChatButton)
+      collectionView.reloadData()
     case .changeToStudyCell:
-      print("change to study section")
-      changeButtonsStyle(clicked: studyButton, cleared: messageButton)
+      changeButtonsStyle(clicked: groupChatButton, cleared: letterButton)
+      collectionView.reloadData()
     case .gotoMessageVC:
       print("push: ChatVC -> MessageVC")
     }
@@ -129,10 +134,12 @@ extension ChatViewController {
 extension ChatViewController {
   @objc private func didTapMessageButton() {
     input.didTapMessageButton.send()
+    isLetterButtonTap = true
   }
   
   @objc private func didTapStudyButton() {
     input.didTapStudyButton.send()
+    isLetterButtonTap = false
   }
 }
 
@@ -141,9 +148,9 @@ extension ChatViewController: LayoutSupport {
   func addSubviews() {
     navigationController?.navigationBar.addSubview(navigationBarUnderLineView)
     
-    _ = [messageButton, studyButton].map { stackView.addArrangedSubview($0) }
+    _ = [letterButton, groupChatButton].map { stackView.addArrangedSubview($0) }
     view.addSubview(stackView)
-    view.addSubview(tableView)
+    view.addSubview(collectionView)
   }
   
   func setConstraints() {
@@ -153,10 +160,9 @@ extension ChatViewController: LayoutSupport {
       $0.height.equalTo(42)
     }
     
-    tableView.snp.makeConstraints {
+    collectionView.snp.makeConstraints {
       $0.top.equalTo(stackView.snp.bottom).offset(12)
-      $0.bottom.equalTo(view.safeAreaLayoutGuide)
-      $0.leading.trailing.equalToSuperview().inset(16)
+      $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
     }
     
     navigationBarUnderLineView.snp.makeConstraints {
@@ -167,45 +173,51 @@ extension ChatViewController: LayoutSupport {
   }
 }
 
-// MARK: - UITableViewDataSource
-extension ChatViewController: UITableViewDataSource {
-  func numberOfSections(in tableView: UITableView) -> Int {
-    1
-  }
-  
-  func tableView(
-    _ tableView: UITableView,
-    numberOfRowsInSection section: Int
+// MARK: - UICollectionViewDataSource
+extension ChatViewController: UICollectionViewDataSource {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    numberOfItemsInSection section: Int
   ) -> Int {
-    return ChatModel.models.count
+    return viewModel.numberOfItemsInSection(isLetterButtonTap)
   }
   
-  func tableView(
-    _ tableView: UITableView,
-    cellForRowAt indexPath: IndexPath
-  ) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatCell.id, for: indexPath)
-    as? ChatCell else { return UITableViewCell() }
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath
+  ) -> UICollectionViewCell {
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatCell.id, for: indexPath)
+    as? ChatCell else { return UICollectionViewCell() }
     
-    let model = ChatModel.models[indexPath.row]
-    cell.configure(model)
+    if isLetterButtonTap {
+      let model = viewModel.fetchLetterModel(at: indexPath.item)
+      cell.configure(letter: model)
+    } else {
+      let model = viewModel.fetchGroupChatModel(at: indexPath.item)
+      cell.configure(group: model)
+    }
+    
     return cell
   }
 }
 
-// MARK: - UITableViewDelegate
-extension ChatViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 60
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true) // selected cell color 제거
-    
+// MARK: - UICollectionViewDelegateFlowLayout
+extension ChatViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath
+  ) {
     input.didSelectedCell.send()
   }
   
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    scrollView.contentOffset.y
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath
+  ) -> CGSize {
+    return CGSize(
+      width: collectionView.frame.width - collectionView.contentInset.left * 2,
+      height: 60
+    )
   }
 }
