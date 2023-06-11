@@ -8,6 +8,10 @@
 import UIKit
 import Combine
 
+protocol LoginViewControllerDelegate: AnyObject {
+  func gotoMainPage()
+}
+
 final class LoginViewController: UIViewController {
   // MARK: - Properties
   private let loginView = LoginView()
@@ -21,6 +25,8 @@ final class LoginViewController: UIViewController {
   
   private var subscription = Set<AnyCancellable>()
   
+  weak var delegate: LoginViewControllerDelegate?
+  
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,6 +35,18 @@ final class LoginViewController: UIViewController {
     loginView.loginHelperViewDelegate = self
     loginViewBind()
     bind()
+  }
+  
+  private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError()
+  }
+  
+  convenience init() {
+    self.init(nibName: nil, bundle: nil)
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -96,6 +114,7 @@ extension LoginViewController: ViewBindCase {
       
       loginView.hideKeyboard()
       print("GotoMainPage")
+      delegate?.gotoMainPage()
     case .idAndPwInputGood:
       loginView.setLoginButtonWorking()
     case .idAndPwInputNotGood:
